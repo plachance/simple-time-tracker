@@ -1,0 +1,58 @@
+{
+	"name": "plachance/simple-time-tracker",
+	"description": "Minimalist time tracking software.",
+	"type": "project",
+	"homepage": "https://github.com/plachance/simple-time-tracker",
+	"license": "MIT",
+	"support": {
+		"issues": "https://github.com/plachance/simple-time-tracker/issues"
+	},
+	"authors":
+	[
+		{
+			"name": "Patrice Lachance",
+			"email": "patricelachance@gmail.com",
+			"homepage": "https://github.com/plachance",
+			"role": "Developer"
+		}
+	],
+	"require":
+	{
+		"php": ">=5.3",
+		"ext-pdo": "*",
+		"pradosoft/prado": "~3.2.0",
+		"doctrine/orm": "~2.4.0",
+		"symfony/console": "~2.4.0",
+		"components/jquery": "~2.1.0",
+		"components/bootstrap": "~3.1.0",
+		"swiftmailer/swiftmailer": "~5.1.0"
+	},
+	"autoload":
+	{
+		"psr-4":
+		{
+			"SimpleTimeTracker\\": "protected/"
+		},
+		"files": ["vendor/pradosoft/prado/framework/prado.php"]
+	},
+	"scripts":
+	{
+		"post-create-project-cmd":
+		[
+			"mkdir -p assets protected/runtime",
+			"cp .htaccess.dist .htaccess",
+			"cp protected/application.default.php protected/application.php",
+			"php console.php orm:generate:proxies"
+		],
+		"post-install-cmd":
+		[
+			"mkdir -p assets protected/runtime",
+			"php console.php orm:generate:proxies"
+		],
+		"post-update-cmd":
+		[
+			"mkdir -p assets protected/runtime",
+			"php console.php orm:generate:proxies"
+		]
+	}
+}

@@ -1,0 +1,112 @@
+<%@ Title="Timesheet" %>
+<com:TContent ID="Content">
+	<div class="form-inline append-bottom text-center">
+		<div class="form-group">
+			<com:XButton ID="BtnPrevious" OnClick="btnPrevious_OnClick" CssClass="btn btn-default">
+				<span class="glyphicon glyphicon-backward"></span> Previous
+			</com:XButton>
+		</div>
+		<div class="form-group">
+			<div class="input-group" style="width: 220px;">
+				<com:TLabel ForControl="TxtWeek" Text="Week :" CssClass="sr-only" />
+				<com:TTextBox ID="TxtWeek" CssClass="form-control col-xs-2" Attributes.type="week" ValidationGroup="Week" />
+				<span class="input-group-btn">
+					<com:TButton ID="BtnSubmit" Text="Show" OnClick="btnSubmit_OnClick" ValidationGroup="Week" CssClass="btn btn-default btn-primary" />
+				</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<com:XButton ID="BtnNext" OnClick="btnNext_OnClick" CssClass="btn btn-default">
+				Next <span class="glyphicon glyphicon-forward"></span>
+			</com:XButton>
+		</div>
+	</div>
+
+	<com:TRepeater
+		ID="LstTasks"
+		EnableViewState="false">
+		<prop:HeaderTemplate>
+			<table id="<%# $this->Parent->ClientID %>" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>No.</th>
+						<th class="text-center active"><%= $this->Page->getDateDayWeek(0) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(1) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(2) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(3) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(4) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(5) %></th>
+						<th class="text-center active"><%= $this->Page->getDateDayWeek(6) %></th>
+						<th class="text-center">Total</th>
+					</tr>
+				<thead>
+				<tbody>
+		</prop:HeaderTemplate>
+
+		<prop:ItemTemplate>
+			<tr>
+				<th><%# $this->Data['project_no'] == null ? 'Total' : $this->Data['project_desc'] %></th>
+				<th><%# $this->Data['project_no'] == null ? 'Total' : str_pad($this->Data['project_no'], 5, '0', STR_PAD_LEFT) %></th>
+				<td class="text-right active"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day1'], 4, 2) %></td>
+				<td class="text-right"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day2'], 4, 2) %></td>
+				<td class="text-right"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day3'], 4, 2) %></td>
+				<td class="text-right"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day4'], 4, 2) %></td>
+				<td class="text-right"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day5'], 4, 2) %></td>
+				<td class="text-right"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day6'], 4, 2) %></td>
+				<td class="text-right active"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['day7'], 4, 2) %></td>
+				<th class="text-right"><%# SimpleTimeTracker\Util::roundToFraction($this->Data['total'], 4, 2) %></th>
+			</tr>
+		</prop:ItemTemplate>
+
+		<prop:FooterTemplate>
+				<tbody>
+			</table>
+		</prop:FooterTemplate>
+
+		<prop:EmptyTemplate>
+			<div class="alert alert-info">
+				<span class="glyphicon glyphicon-info-sign"></span>
+				You don't have any task for the week of <com:TDateFormat Pattern="fulldate" Value="<%= $this->Page->getDateBegin()->getTimestamp() %>" />.
+			</div>
+		</prop:EmptyTemplate>
+	</com:TRepeater>
+	
+	<com:TLiteral Visible="<%= $this->LstHoursBeginEnd->Items->Count != 0 %>"><h2>Begin and end hours</h2></com:TLiteral>
+	<com:TRepeater
+		ID="LstHoursBeginEnd"
+		EnableViewState="false">
+		<prop:HeaderTemplate>
+			<table id="<%# $this->Parent->ClientID %>" class="table table-striped">
+				<thead class="text-center">
+					<tr>
+						<th class="text-center active"><%= $this->Page->getDateDayWeek(0) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(1) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(2) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(3) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(4) %></th>
+						<th class="text-center"><%= $this->Page->getDateDayWeek(5) %></th>
+						<th class="text-center active"><%= $this->Page->getDateDayWeek(6) %></th>
+					</tr>
+				<thead>
+				<tbody class="text-center">
+		</prop:HeaderTemplate>
+		
+		<prop:ItemTemplate>
+			<tr>
+				<td class="active"><%# $this->Data[0] %></td>
+				<td><%# $this->Data[1] %></td>
+				<td><%# $this->Data[2] %></td>
+				<td><%# $this->Data[3] %></td>
+				<td><%# $this->Data[4] %></td>
+				<td><%# $this->Data[5] %></td>
+				<td class="active"><%# $this->Data[6] %></td>
+			</tr>
+		</prop:ItemTemplate>
+
+		<prop:FooterTemplate>
+				<tbody>
+			</table>
+		</prop:FooterTemplate>
+	</com:TRepeater>
+</com:TContent>

@@ -1,0 +1,38 @@
+<%@ Title="Sign in" %>
+<com:TContent ID="Content">
+	<div class="form-horizontal">
+		<div class="form-group">
+			<com:TLabel ForControl="TxtUsername" Text="Username :" CssClass="col-sm-4 control-label" />
+			<div class="col-sm-4">
+				<com:TTextBox ID="TxtUsername" CssClass="form-control" Attributes.placeholder="Username" />
+			</div>
+			<div class="col-sm-8 col-sm-offset-4">
+				<com:TRequiredFieldValidator ControlToValidate="TxtUsername" />
+			</div>
+		</div>
+		<div class="form-group">
+			<com:TLabel ForControl="TxtPassword" Text="Password :" CssClass="col-sm-4 control-label" />
+			<div class="col-sm-4">
+				<com:TTextBox ID="TxtPassword" TextMode="Password" CssClass="form-control" Attributes.placeholder="Password" />
+			</div>
+			<div class="col-sm-8 col-sm-offset-4">
+				<com:TRequiredFieldValidator ControlToValidate="TxtPassword" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-8">
+				<div class="checkbox">
+					<com:TLabel ForControl="ChkStaySignedIn">
+						<com:TCheckBox ID="ChkStaySignedIn" /> Stay signed in
+					</com:TLabel>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-8">
+				<com:TButton ID="BtnSubmit" Text="Sign in" OnClick="btnSubmit_OnClick" CssClass="btn btn-default btn-primary" />
+				<a href="<%= $this->Service->constructUrl('recover') %>">Recover password</a>
+			</div>
+		</div>
+	</div>
+</com:TContent>

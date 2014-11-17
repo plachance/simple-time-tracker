@@ -1,0 +1,8 @@
+/vendor/
+/protected/runtime/
+/components/
+/assets/
+/composer.lock
+/protected/application.php
+/.htaccess
+/.project

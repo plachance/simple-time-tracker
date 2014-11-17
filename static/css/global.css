@@ -1,0 +1,37 @@
+/* In case you need to add a gutter above/below an element */
+div.prepend-top, .prepend-top
+{
+	margin-top:0.5em;
+}
+
+div.append-bottom, .append-bottom
+{
+	margin-bottom:0.5em;
+}
+
+.bottom
+{
+	margin-bottom: 0;
+}
+
+.pagination
+{
+	margin: 0 0 15px;
+}
+
+.panel.collapsible .panel-heading
+{
+	cursor: pointer;
+}
+
+.panel.collapsible .panel-heading .panel-title:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel.collapsible .panel-heading.collapsed .panel-title:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}

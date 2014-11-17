@@ -1,0 +1,19 @@
+# Url rewriting
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+# apple-touch-icon.png, apple-touch-icon-precomposed.png, apple-touch-icon-72x72.png, apple-touch-icon-144x144.png
+RewriteCond %{REQUEST_URI} !apple-touch-icon[^/]*\.png$ [NC]
+RewriteCond %{REQUEST_URI} !favicon\.ico$ [NC]
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+#Block files and folder access.
+<FilesMatch "console\.php|\.htaccess\.dist|composer\.(json|lock)">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+RewriteRule \.git/ - [F]
+RewriteRule tests/ - [F]
+RewriteRule nbproject/ - [F]
+RewriteRule vendor/ - [F]

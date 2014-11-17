@@ -1,0 +1,28 @@
+<com:TRequiredFieldValidator
+	Display="Dynamic"
+	FocusOnError="true"
+	Text="Required field." />
+
+<com:TRegularExpressionValidator
+	Display="Dynamic"
+	FocusOnError="true"/>
+
+<com:TEmailAddressValidator
+	Display="Dynamic"
+	FocusOnError="true"/>
+
+<com:TCompareValidator
+	Display="Dynamic"
+	FocusOnError="true"/>
+
+<com:TDataTypeValidator
+	Display="Dynamic"
+	FocusOnError="true"/>
+
+<com:TRangeValidator
+	Display="Dynamic"
+	FocusOnError="true"/>
+
+<com:TCustomValidator
+	Display="Dynamic"
+	FocusOnError="true"/>
