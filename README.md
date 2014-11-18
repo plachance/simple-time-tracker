@@ -12,4 +12,4 @@ PostgreSQL 9 and up.
 Installation
 ------------
 
-	php composer.phar create-project --repository-url=https://github.com/plachance/simple-time-tracker plachance/simple-time-tracker
+Download, extract and run ```php composer.phar install```, edit .htaccess and protected/application.php.
