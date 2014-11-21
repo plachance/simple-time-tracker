@@ -1,5 +1,9 @@
 # Url rewriting
 RewriteEngine On
+
+# Edit this line to match your setup.
+RewriteBase /SimpleTimeTracker/
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 # apple-touch-icon.png, apple-touch-icon-precomposed.png, apple-touch-icon-72x72.png, apple-touch-icon-144x144.png
