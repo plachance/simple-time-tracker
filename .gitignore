@@ -1,8 +1,19 @@
+# Libraries and Cache
 /vendor/
 /protected/runtime/
 /components/
 /assets/
 /composer.lock
+
+#Project config files.
 /protected/application.php
 /.htaccess
+
+#Project files.
 /.project
+*.iml
+.idea
+
+## OS Specific
+.DS_Store
+Thumbs.db
