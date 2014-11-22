@@ -12,4 +12,6 @@ PostgreSQL 9 and up.
 Installation
 ------------
 
-Download, extract and run ```php composer.phar install```, edit .htaccess and protected/application.php.
+* Copy `.htaccess.dist` to `.htaccess`. Edit to your setup.
+* Copy `/protected/application.default.php` to `/protected/application.php`. Edit to your setup.
+* Download, extract and run ```php composer.phar install```
