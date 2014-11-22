@@ -1,32 +1,31 @@
-<%@ Title="History" %>
 <com:TContent ID="Content">
 	<div class="panel panel-default collapsible">
 		<div class="panel-heading" data-toggle="collapse" data-target="#filtres">
-			<h3 class="panel-title">Filters</h3>
+			<h3 class="panel-title"><%[Filters]%></h3>
 		</div>
 		<div id="filters" class="panel-collapse collapse in">
 			<div class="panel-body">
 				<div class="form-horizontal">
 					<div class="form-group">
-						<com:TLabel ForControl="TxtProject" Text="Project :" CssClass="col-sm-4 control-label" />
+						<com:TLabel ForControl="TxtProject" Text="<%[Project :]%>" CssClass="col-sm-4 control-label" />
 						<div class="col-sm-4">
-							<com:TTextBox ID="TxtProject" CssClass="form-control" Attributes.placeholder="No-Name (Ex. : 12345-MyProject)" />
+							<com:TTextBox ID="TxtProject" CssClass="form-control" Attributes.placeholder="<%[No-Name (Ex. : 12345-MyProject)]%>" />
 						</div>
 					</div>
 					<div class="form-group">
-						<com:TLabel ForControl="TxtDateTimeBeginFrom" Text="Begin :" CssClass="col-sm-4 control-label" />
+						<com:TLabel ForControl="TxtDateTimeBeginFrom" Text="<%[Begin :]%>" CssClass="col-sm-4 control-label" />
 						<div class="col-sm-8">
 							<div class="form-inline">
-								Between
+								<%[Between]%>
 								<com:TTextBox ID="TxtDateTimeBeginFrom" CssClass="form-control" Attributes.type="datetime-local" Attributes.step="1" />
-								and
+								<%[and]%>
 								<com:TTextBox ID="TxtDateTimeBeginTo" CssClass="form-control" Attributes.type="datetime-local" Attributes.step="1" />
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<com:TButton ID="BtnSubmit" Text="Show" OnClick="btnSubmit_OnClick" CssClass="btn btn-default btn-primary" />
+							<com:TButton ID="BtnSubmit" Text="<%[Show]%>" OnClick="btnSubmit_OnClick" CssClass="btn btn-default btn-primary" />
 						</div>
 					</div>
 				</div>
@@ -47,36 +46,37 @@
 		OnSortCommand="lstTasks_OnSortCommand"
 		CssClass="table table-striped">
 		<com:TTemplateColumn
-			HeaderText="Project"
+			HeaderText="<%[Project]%>"
 			SortExpression="p.no, p.description">
 			<prop:ItemTemplate>
 				<%# $this->Parent->Data['no'] . ($this->Parent->Data['project_description'] == '' ? '' : '-' . $this->Parent->Data['project_description']) %>
 			</prop:ItemTemplate>
 		</com:TTemplateColumn>
 		<com:TBoundColumn
-			HeaderText="Description"
+			HeaderText="<%[Description]%>"
 			DataField="description"/>
 		<com:TTemplateColumn
-			HeaderText="Begin"
+			HeaderText="<%[Begin]%>"
 			SortExpression="t.dateTimeBegin">
 			<prop:ItemTemplate>
 				<com:TDateFormat Pattern="mediumdate mediumtime" Value="<%# $this->Parent->Data['dateTimeBegin']->getTimestamp() %>" />
 			</prop:ItemTemplate>
 		</com:TTemplateColumn>
 		<com:TTemplateColumn
-			HeaderText="End"
+			HeaderText="<%[End]%>"
 			SortExpression="t.dateTimeEnd">
 			<prop:ItemTemplate>
 				<com:XDateFormat Pattern="mediumdate mediumtime" Value="<%# $this->Parent->Data['dateTimeEnd'] == null ? null : $this->Parent->Data['dateTimeEnd']->getTimestamp() %>" />
 			</prop:ItemTemplate>
 		</com:TTemplateColumn>
 		<com:TBoundColumn
-			HeaderText="Duration"
+			HeaderText="<%[Duration]%>"
 			DataField="duration"
 			SortExpression="duration"/>
 		<com:TTemplateColumn>
 			<prop:ItemTemplate>
-				<a href="<%# $this->Service->constructUrl('task.edit', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>" class="btn btn-default btn-sm" title="Modify">
+				<a href="<%# $this->Service->constructUrl('task.edit', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>"
+				   class="btn btn-default btn-sm" title="<%[Modify]%>">
 					<span class="glyphicon glyphicon-edit"></span>
 				</a>
 			</prop:ItemTemplate>
@@ -84,7 +84,7 @@
 		<com:TTemplateColumn>
 			<prop:ItemTemplate>
 				<a href="<%# $this->Service->constructUrl('task.delete', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>"
-				   class="btn btn-default btn-sm" title="Delete">
+				   class="btn btn-default btn-sm" title="<%[Delete]%>">
 					<span class="glyphicon glyphicon-remove"></span>
 				</a>
 			</prop:ItemTemplate>
@@ -92,7 +92,7 @@
 		<prop:EmptyTemplate>
 			<div class="alert alert-info">
 				<span class="glyphicon glyphicon-info-sign"></span>
-				You don't have any task.
+				<%[You don't have any task.]%>
 			</div>
 		</prop:EmptyTemplate>
 	</com:XDataGrid>

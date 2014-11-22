@@ -42,7 +42,7 @@ class UserController extends Controller
 	{
 		if($algorithm == null)
 		{
-			throw new TInvalidDataValueException('Algorithm must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('Algorithm must not be null.'));
 		}
 
 		$this->passwordHashAlgorithm = $algorithm;
@@ -191,7 +191,7 @@ class UserController extends Controller
 			$user = $this->getUser($username);
 			if($user === null)
 			{
-				throw new TInvalidDataValueException('User does not exists.');
+				throw new TInvalidDataValueException(Prado::localize('Username "{username}" does not exists.', array('username' => $username)));
 			}
 			$user->setPassword($this->hashPassword($password, $user->getHashSalt()));
 
@@ -220,7 +220,7 @@ class UserController extends Controller
 			$user = $this->getUser($username);
 			if($user === null)
 			{
-				throw new TInvalidDataValueException('User does not exists.');
+				throw new TInvalidDataValueException(Prado::localize('Username "{username}" does not exists.', array('username' => $username)));
 			}
 
 			$timeout = new DateTime();
@@ -252,7 +252,7 @@ class UserController extends Controller
 		$user = $this->getUser($username);
 		if($user === null)
 		{
-			throw new TInvalidDataValueException('User does not exists.');
+			throw new TInvalidDataValueException(Prado::localize('Username "{username}" does not exists.', array('username' => $username)));
 		}
 
 		$now = new DateTime();
@@ -270,7 +270,7 @@ class UserController extends Controller
 		$user = $this->getUserFromUsernameOrEmail($usernameOrEmail);
 		if($user === null)
 		{
-			throw new TInvalidDataValueException('User does not exists.');
+			throw new TInvalidDataValueException(Prado::localize('Username or email "{username}" does not exists.', array('username' => $usernameOrEmail)));
 		}
 		$confirmationCode = $this->resetConfirmationCode($user->getName());
 

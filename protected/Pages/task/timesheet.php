@@ -65,6 +65,8 @@ class timesheet extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('Timesheet'));
+			
 			$date = new DateTime();
 			$date->add(New DateInterval('P1D')); //Our week begin sunday, not monday.
 			$semaine = $date->toWeekString();

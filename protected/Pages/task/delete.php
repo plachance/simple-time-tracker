@@ -40,6 +40,8 @@ class delete extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('Delete task'));
+
 			$taskId = $this->getRequest()->itemAt(self::QS_ID);
 			$ctrl = new TaskController();
 			try
@@ -50,7 +52,7 @@ class delete extends XPage
 				}
 				else
 				{
-					$this->setMessage('You can\'t delete this task.', MessageType::Error);
+					$this->setMessage(Prado::localize('You can\'t delete this task.'), MessageType::Error);
 					$this->Content->setVisible(false);
 				}
 			}
@@ -72,7 +74,7 @@ class delete extends XPage
 		{
 			$ctrl = new TaskController();
 			$ctrl->deleteTask($this->getTaskId());
-			$this->setMessage('Task deleted.', MessageType::Success);
+			$this->setMessage(Prado::localize('Task deleted.'), MessageType::Success);
 			$this->getResponse()->redirect($this->getReturnUrl());
 		}
 	}

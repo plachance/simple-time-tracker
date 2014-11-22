@@ -48,11 +48,20 @@ return array(
 				array('properties' => array('ServiceParameter' => '*', 'pattern' => '{*}', 'CaseSensitive' => false)),
 			),
 		),
+		'response' => array(
+			'class' => 'Application.Web.XHttpResponse',
+		),
 		'security' => array(
 			'class' => 'System.Security.TSecurityManager',
 		),
 		'globalization' => array(
 			'class' => 'Application.I18N.XGlobalization',
+			'translate' => array(
+				'type' => 'XLIFF',
+				'source' => 'Application.I18N.Messages',
+				'filename' => '',
+				'cache' => true,
+			),
 			'properties' => array(
 				'DefaultCulture' => 'en_US',
 				'Culture' => 'en_US',

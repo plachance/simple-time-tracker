@@ -74,7 +74,7 @@ class XDbCommand extends TDbCommand
 						break;
 
 					default:
-						throw new TNotSupportedException('Unsupported type "' . $type . '".');
+						throw new TNotSupportedException(Prado::localize('Unsupported type "{type}".', array('type' =>  $types[$key])));
 				}
 			}
 

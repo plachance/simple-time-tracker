@@ -7,7 +7,6 @@
  * 
  * php console.php orm:generate-proxies
  */
-
 use Doctrine\DBAL\Tools\Console\Command\ImportCommand;
 use Doctrine\DBAL\Tools\Console\Command\RunSqlCommand;
 use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
@@ -33,6 +32,7 @@ use Symfony\Component\Console\Application;
 require 'vendor/autoload.php';
 
 $application = new TShellApplication('protected', false, TApplication::CONFIG_TYPE_PHP);
+register_shutdown_function(array($application, 'onEndRequest'));
 $application->run();
 
 $console = new Application($application->getID());

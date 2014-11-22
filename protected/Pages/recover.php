@@ -33,6 +33,8 @@ class recover extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('Recover password'));
+
 			$username = $this->getRequest()->itemAt(self::QS_USERNAME);
 			if($username == null)
 			{
@@ -49,7 +51,7 @@ class recover extends XPage
 				}
 				else
 				{
-					$this->setMessage('Confirmation code invalid or expired.', MessageType::Error);
+					$this->setMessage(Prado::localize('Confirmation code invalid or expired.'), MessageType::Error);
 				}
 			}
 		}
@@ -67,7 +69,7 @@ class recover extends XPage
 			try
 			{
 				$users->sendRecoverMail($this->TxtUsername->getText());
-				$this->setMessage('An email containing password recovery instruction has been sent.', MessageType::Success);
+				$this->setMessage(Prado::localize('An email containing password recovery instruction has been sent.'), MessageType::Success);
 				$this->PnlEmail->setVisible(false);
 			}
 			catch(TInvalidDataValueException $ex)
@@ -76,7 +78,7 @@ class recover extends XPage
 			}
 			catch(Exception $ex)
 			{
-				$this->setMessage('Unknown error encountered. Please try again later.', MessageType::Error);
+				$this->setMessage(Prado::localize('Unknown error encountered. Please try again later.'), MessageType::Error);
 				Prado::log($ex, TLogger::ERROR, 'Application.Pages.Recover');
 			}
 		}
@@ -92,7 +94,7 @@ class recover extends XPage
 		{
 			$users = new UserController();
 			$users->changePassword($this->getUsername(), $this->TxtPassword->getText());
-			$this->setMessage('New password saved. You can now sign in.', MessageType::Success);
+			$this->setMessage(Prado::localize('New password saved. You can now sign in.'), MessageType::Success);
 			$this->PnlRecover->setVisible(false);
 		}
 	}

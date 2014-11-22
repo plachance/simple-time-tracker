@@ -24,6 +24,8 @@ class history extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('History'));
+			
 			$this->initTasks();
 		}
 	}

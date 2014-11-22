@@ -6,6 +6,7 @@ use DateInterval;
 use DateTime;
 use Doctrine\ORM\Query;
 use Exception;
+use Prado;
 use SimpleTimeTracker\Controllers\Exceptions\EntityNotFoundException;
 use SimpleTimeTracker\Entities\Project;
 use SimpleTimeTracker\Entities\Task;
@@ -29,7 +30,7 @@ class TaskController extends Controller
 	{
 		if($userId == null)
 		{
-			throw new TInvalidDataValueException('UserId must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('UserId must not be null.'));
 		}
 
 		$em = $this->getEntityManager();
@@ -63,7 +64,7 @@ class TaskController extends Controller
 	{
 		if($userId == null)
 		{
-			throw new TInvalidDataValueException('UserId must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('UserId must not be null.'));
 		}
 
 		$em = $this->getEntityManager();
@@ -138,7 +139,7 @@ class TaskController extends Controller
 	{
 		if($userId == null)
 		{
-			throw new TInvalidDataValueException('UserId must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('UserId must not be null.'));
 		}
 
 		$dateBegin = clone $dateBegin;
@@ -216,7 +217,7 @@ class TaskController extends Controller
 	{
 		if($userId == null)
 		{
-			throw new TInvalidDataValueException('UserId must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('UserId must not be null.'));
 		}
 
 		$dateBegin = clone $dateBegin;
@@ -293,7 +294,7 @@ class TaskController extends Controller
 	{
 		if($id == null)
 		{
-			throw new TInvalidDataValueException('Id must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('Id must not be null.'));
 		}
 
 		$em = $this->getEntityManager();
@@ -304,7 +305,7 @@ class TaskController extends Controller
 			/* @var $task Task */
 			if($task == null)
 			{
-				throw new TInvalidDataValueException("Task Id '$id' does not exists.");
+				throw new TInvalidDataValueException(Prado::localize('Task Id "{id}" does not exists.', array('id' => $id)));
 			}
 
 			if($task->getDateTimeEnd() != null)
@@ -340,7 +341,7 @@ class TaskController extends Controller
 	{
 		if($id == null)
 		{
-			throw new TInvalidDataValueException('Id must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('Id must not be null.'));
 		}
 
 		$em = $this->getEntityManager();
@@ -351,7 +352,7 @@ class TaskController extends Controller
 			/* @var $task Task */
 			if($task == null)
 			{
-				throw new TInvalidDataValueException("Task Id '$id' does not exists.");
+				throw new TInvalidDataValueException(Prado::localize('Task Id "{id}" does not exists.', array('id' => $id)));
 			}
 
 			if($task->getDateTimeEnd() == null)
@@ -457,7 +458,7 @@ class TaskController extends Controller
 		$task = $this->getTask($taskId);
 		if($task == null)
 		{
-			throw new TInvalidDataValueException("Task Id '$taskId' does not exists.");
+			throw new TInvalidDataValueException(Prado::localize('Task Id "{id}" does not exists.', array('id' => $taskId)));
 		}
 
 		return $task->getUser()->getId() == $userId;
@@ -472,7 +473,7 @@ class TaskController extends Controller
 	{
 		if($id == null)
 		{
-			throw new TInvalidDataValueException('Id must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('Id must not be null.'));
 		}
 
 		$em = $this->getEntityManager();
@@ -483,7 +484,7 @@ class TaskController extends Controller
 			/* @var $task Task */
 			if($task == null)
 			{
-				throw new TInvalidDataValueException("Task Id '$id' does not exists.");
+				throw new TInvalidDataValueException(Prado::localize('Task Id "{id}" does not exists.', array('id' => $id)));
 			}
 			$em->remove($task);
 
@@ -510,7 +511,7 @@ class TaskController extends Controller
 	{
 		if($id == null)
 		{
-			throw new TInvalidDataValueException('Id must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('Id must not be null.'));
 		}
 
 		$em = $this->getEntityManager();
@@ -521,7 +522,7 @@ class TaskController extends Controller
 			/* @var $task Task */
 			if($task == null)
 			{
-				throw new TInvalidDataValueException("Task Id '$id' does not exists.");
+				throw new TInvalidDataValueException(Prado::localize('Task Id "{id}" does not exists.', array('id' => $id)));
 			}
 
 			if($task->getProject()->__toString() != $projectText)

@@ -10,6 +10,10 @@ $config['application']['mode'] = TApplicationMode::Debug;
 
 $config['modules']['cache']['class'] = 'Application.Caching.XDummyCache';
 
+$config['modules']['globalization']['translate']['cache'] = false;
+$config['modules']['globalization']['translate']['marker'] = '@@';
+$config['modules']['globalization']['translate']['autosave'] = true;
+
 $config['modules']['bd']['properties']['ConnectionClass'] = 'Application.Data.XDbConnection';
 $config['modules']['doctrine']['properties']['SqlLoggerClass'] = 'SimpleTimeTracker\Data\PradoSQLLogger';
 $config['modules']['doctrine']['properties']['CacheClass'] = 'Doctrine\Common\Cache\ArrayCache';

@@ -1,10 +1,9 @@
-<%@ Title="Recover password" %>
 <com:TContent ID="Content">
 	<com:TPanel ID="PnlEmail" Visible="false" CssClass="form-horizontal">
 		<div class="form-group">
-			<com:TLabel ForControl="TxtUsername" Text="Username or email :" CssClass="col-sm-4 control-label" />
+			<com:TLabel ForControl="TxtUsername" Text="<%[Username or email :]%>" CssClass="col-sm-4 control-label" />
 			<div class="col-sm-4">
-				<com:TTextBox ID="TxtUsername" CssClass="form-control" Attributes.placeholder="Username or email" />
+				<com:TTextBox ID="TxtUsername" CssClass="form-control" Attributes.placeholder="<%[Username or email]%>" />
 			</div>
 			<div class="col-sm-8 col-sm-offset-4">
 				<com:TRequiredFieldValidator ControlToValidate="TxtUsername" />
@@ -13,25 +12,25 @@
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-8">
 				<com:XButton ID="BtnSend" OnClick="btnSend_OnClick" CssClass="btn btn-default btn-primary">
-					<span class="glyphicon glyphicon-envelope"></span> Recover
+					<span class="glyphicon glyphicon-envelope"></span> <%[Recover]%>
 				</com:XButton>
 			</div>
 		</div>
 	</com:TPanel>
 	<com:TPanel ID="PnlRecover" Visible="false" CssClass="form-horizontal">
 		<div class="form-group">
-			<com:TLabel ForControl="TxtPassword" Text="New password :" CssClass="col-sm-4 control-label" />
+			<com:TLabel ForControl="TxtPassword" Text="<%[New password :]%>" CssClass="col-sm-4 control-label" />
 			<div class="col-sm-4">
-				<com:TTextBox ID="TxtPassword" TextMode="Password" CssClass="form-control" Attributes.placeholder="New password" />
+				<com:TTextBox ID="TxtPassword" TextMode="Password" CssClass="form-control" Attributes.placeholder="<%[New password]%>" />
 			</div>
 			<div class="col-sm-8 col-sm-offset-4">
 				<com:TRequiredFieldValidator ControlToValidate="TxtPassword" />
 			</div>
 		</div>
 		<div class="form-group">
-			<com:TLabel ForControl="TxtPasswordConfirm" Text="Confirm password :" CssClass="col-sm-4 control-label" />
+			<com:TLabel ForControl="TxtPasswordConfirm" Text="<%[Confirm password :]%>" CssClass="col-sm-4 control-label" />
 			<div class="col-sm-4">
-				<com:TTextBox ID="TxtPasswordConfirm" TextMode="Password" CssClass="form-control" Attributes.placeholder="Confirm password" />
+				<com:TTextBox ID="TxtPasswordConfirm" TextMode="Password" CssClass="form-control" Attributes.placeholder="<%[Confirm password]%>" />
 			</div>
 			<div class="col-sm-8 col-sm-offset-4">
 				<com:TRequiredFieldValidator ControlToValidate="TxtPasswordConfirm" />
@@ -40,12 +39,12 @@
 					ControlToCompare="TxtPassword"
 					Operator="Equal"
 					DataType="String"
-					Text="Confirmation does not match password." />
+					Text="<%[Confirmation does not match password.]%>" />
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-8">
-				<com:TButton ID="BtnModify" Text="Modifier" OnClick="btnModify_OnClick" CssClass="btn btn-default btn-primary" />
+				<com:TButton ID="BtnModify" Text="<%[Save]%>" OnClick="btnModify_OnClick" CssClass="btn btn-default btn-primary" />
 			</div>
 		</div>
 	</com:TPanel>

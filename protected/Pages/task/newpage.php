@@ -12,6 +12,16 @@ use SimpleTimeTracker\Controllers\TaskController;
  */
 class newpage extends XPage
 {
+	public function onInit($param)
+	{
+		parent::onInit($param);
+
+		if(!$this->getIsPostBack())
+		{
+			$this->setTitle(Prado::localize('Create task'));
+		}
+	}
+
 	/**
 	 * Create a new task.
 	 * @param TButton $sender

@@ -1,7 +1,7 @@
 <com:TRequiredFieldValidator
 	Display="Dynamic"
 	FocusOnError="true"
-	Text="Required field." />
+	Text="<%[Required field.]%>" />
 
 <com:TRegularExpressionValidator
 	Display="Dynamic"

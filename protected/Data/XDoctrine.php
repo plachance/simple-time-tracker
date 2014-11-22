@@ -233,12 +233,12 @@ class XDoctrine extends TModule
 		{
 			if(@mkdir($this->proxyDir, PRADO_CHMOD) === false)
 			{
-				throw new TConfigurationException('Unable to create proxy directory "' . $this->proxyDir . '".');
+				throw new TConfigurationException(Prado::localize('Unable to create proxy directory "{dir}".', array('dir' => $this->proxyDir)));
 			}
 		}
 		else if(!is_writable($this->proxyDir))
 		{
-			throw new TConfigurationException('Unable to write to proxy directory "' . $this->proxyDir . '".');
+			throw new TConfigurationException(Prado::localize('Unable to create proxy directory "{dir}".', array('dir' => $this->proxyDir)));
 		}
 	}
 
@@ -281,7 +281,7 @@ class XDoctrine extends TModule
 				break;
 
 			default:
-				throw new TConfigurationException('Unsupported driver type "' . $this->getDriverType() . '".');
+				throw new TConfigurationException(Prado::localize('Unsupported driver type "{type}".', array('type' => $this->getDriverType())));
 		}
 
 		return $dConfig;

@@ -47,6 +47,8 @@ class current extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('Current task'));
+			
 			$projectCtrl = new ProjectController();
 			$projects = $projectCtrl->getLastProjects($this->getUser()->getId());
 			$this->LstProjects->setDataSource($projects);

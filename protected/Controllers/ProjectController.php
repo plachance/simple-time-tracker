@@ -4,6 +4,7 @@ namespace SimpleTimeTracker\Controllers;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Query\ResultSetMapping;
+use Prado;
 use TInvalidDataValueException;
 
 /**
@@ -24,7 +25,7 @@ class ProjectController extends Controller
 	{
 		if($userId == null)
 		{
-			throw new TInvalidDataValueException('UserId must not be null.');
+			throw new TInvalidDataValueException(Prado::localize('UserId must not be null.'));
 		}
 
 		$em = $this->getEntityManager();

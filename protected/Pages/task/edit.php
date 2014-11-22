@@ -42,19 +42,21 @@ class edit extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('Modify task'));
+
 			$id = $this->getRequest()->itemAt(self::QS_ID);
 			$ctrl = new TaskController();
 			$task = $ctrl->getTask($id);
 			if($task == null)
 			{
-				$this->setMessage('Task not found.', MessageType::Error);
+				$this->setMessage(Prado::localize('Task not found.'), MessageType::Error);
 				$this->Content->setVisible(false);
 			}
 			else if($task->getUser()->getName() != $this->getUser()->getName())
 			{
-				$this->setMessage('You can\'t modify this task.', MessageType::Error);
+				$this->setMessage(Prado::localize('You can\'t modify this task.'), MessageType::Error);
 				$this->Content->setVisible(false);
-				Prado::log('Acces denied. Username "' . $this->getUser()->getName() . '", Task "' . $id . '".', TLogger::WARNING, 'Application.pages.Task');
+				Prado::log(Prado::localize('Acces denied. Username "{username}", Task "{task}".', array('username' => $this->getUser()->getName(), 'task' => $id)), TLogger::WARNING, 'Application.pages.Task');
 			}
 			else
 			{
@@ -81,7 +83,7 @@ class edit extends XPage
 		{
 			$ctrl = new TaskController();
 			$ctrl->modifierTask($this->getTaskId(), $this->TxtProject->getText(), $this->TxtDescription->getText(), new DateTime($this->TxtDateTimeBegin->getText()), $this->TxtDateTimeEnd->getText() == '' ? null : new DateTime($this->TxtDateTimeEnd->getText()));
-			$this->setMessage('Task saved.', MessageType::Success);
+			$this->setMessage(Prado::localize('Task saved.'), MessageType::Success);
 			$this->getResponse()->redirect($this->getReturnUrl());
 		}
 	}

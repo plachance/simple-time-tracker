@@ -21,6 +21,8 @@ class login extends XPage
 
 		if(!$this->getIsPostBack())
 		{
+			$this->setTitle(Prado::localize('Sign in'));
+			
 			if(!$this->getUser()->getIsGuest())
 			{
 				$this->getResponse()->redirect($this->getService()->constructUrl(''));
@@ -50,7 +52,7 @@ class login extends XPage
 			}
 			else
 			{
-				$this->setMessage('Username of password invalid.', MessageType::Error);
+				$this->setMessage(Prado::localize('Username of password invalid.'), MessageType::Error);
 			}
 		}
 	}

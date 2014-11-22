@@ -1,11 +1,10 @@
-<%@ Title="Delete task" %>
 <com:TContent ID="Content">
 	<div class="form-horizontal">
-		<p>Are you sure you want to delete this task?</p>
+		<p><%[Are you sure you want to delete this task?]%></p>
 
 		<div class="">
-			<com:TButton ID="BtnSubmit" Text="Delete" OnClick="btnSubmit_OnClick" CssClass="btn btn-default btn-primary" />
-			<a href="<%= $this->ReturnUrl %>" class="btn btn-default">Cancel</a>
+			<com:TButton ID="BtnSubmit" Text="<%[Delete]%>" OnClick="btnSubmit_OnClick" CssClass="btn btn-default btn-primary" />
+			<a href="<%= $this->ReturnUrl %>" class="btn btn-default"><%[Cancel]%></a>
 		</div>
 	</div>
 </com:TContent>

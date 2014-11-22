@@ -85,7 +85,7 @@ class PradoSQLLogger implements SQLLogger
 							break;
 
 						default:
-							throw new TNotSupportedException('Unsupported type "' . $types[$key] . '".');
+							throw new TNotSupportedException(Prado::localize('Unsupported type "{type}".', array('type' =>  $types[$key])));
 					}
 				}
 

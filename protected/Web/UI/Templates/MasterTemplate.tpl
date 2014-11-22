@@ -2,7 +2,7 @@
 <html lang="<%= $this->Application->Globalization->Culture %>" class="no-js">
 	<com:THead
 		ShortcutIcon="<%/ favicon.ico %>"
-		Title="Simple Time Tracker">
+		Title="<%[Simple Time Tracker]%>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="<%/ components/jquery/jquery.min.js %>"></script>
 		<script>$.noConflict();</script>
@@ -28,18 +28,18 @@
 				<div class="col-sm-2 text-right">
 					<com:TConditional Condition="$this->User->getIsGuest()">
 						<prop:TrueTemplate>
-							<a href="<%= $this->Service->constructUrl('login') %>" class="btn btn-sm">Sign in <span class="glyphicon glyphicon-log-in"></span></a>
+							<a href="<%= $this->Service->constructUrl('login') %>" class="btn btn-sm"><%[Sign in]%> <span class="glyphicon glyphicon-log-in"></span></a>
 						</prop:TrueTemplate>
 						<prop:FalseTemplate>
-							<%= $this->User->getName() %><a href="<%= $this->Service->constructUrl('logout') %>" title="Sign out" class="btn btn-sm"><span class="glyphicon glyphicon-log-out"></span></a>
+							<%= $this->User->getName() %><a href="<%= $this->Service->constructUrl('logout') %>" title="<%[Sign out]%>" class="btn btn-sm"><span class="glyphicon glyphicon-log-out"></span></a>
 						</prop:FalseTemplate>
 					</com:TConditional>
 				</div>
 			</div>
 			<com:XMenu ID="LstMenu" CssClass="append-bottom">
-				<com:XListItem Value="" Text="Current task" />
-				<com:TListItem Value="task.history" Text="History" />
-				<com:TListItem Value="task.timesheet" Text="Timesheet" />
+				<com:XListItem Value="" Text="<%[Current task]%>" />
+				<com:TListItem Value="task.history" Text="<%[History]%>" />
+				<com:TListItem Value="task.timesheet" Text="<%[Timesheet]%>" />
 			</com:XMenu>
 			<div class="row">
 				<div class="col-sm-12">
