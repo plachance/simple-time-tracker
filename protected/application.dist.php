@@ -61,6 +61,8 @@ return array(
 				'source' => 'Application.I18N.Messages',
 				'filename' => '',
 				'cache' => true,
+				'marker' => '',
+				'autosave' => false,
 			),
 			'properties' => array(
 				'DefaultCulture' => 'en_US',
