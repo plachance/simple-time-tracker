@@ -36,68 +36,70 @@
 	<com:XPager
 		ControlToPaginate="LstTasks"
 		OnPageIndexChanged="lstTasks_OnPageIndexChanged"/>
-	<com:XDataGrid
-		ID="LstTasks"
-		AutoGenerateColumns="false"
-		AllowSorting="true"
-		AllowPaging="true"
-		AllowCustomPaging="true"
-		PageSize="25"
-		OnSortCommand="lstTasks_OnSortCommand"
-		SortExpression="t.dateTimeBegin"
-		SortOrder="Desc"
-		CssClass="table table-striped">
-		<com:TTemplateColumn
-			HeaderText="<%[Project]%>"
-			SortExpression="p.no, p.description">
-			<prop:ItemTemplate>
-				<%# $this->Parent->Data['no'] . ($this->Parent->Data['project_description'] == '' ? '' : '-' . $this->Parent->Data['project_description']) %>
-			</prop:ItemTemplate>
-		</com:TTemplateColumn>
-		<com:TBoundColumn
-			HeaderText="<%[Description]%>"
-			DataField="description"/>
-		<com:TTemplateColumn
-			HeaderText="<%[Begin]%>"
-			SortExpression="t.dateTimeBegin">
-			<prop:ItemTemplate>
-				<com:TDateFormat Pattern="mediumdate mediumtime" Value="<%# $this->Parent->Data['dateTimeBegin']->getTimestamp() %>" />
-			</prop:ItemTemplate>
-		</com:TTemplateColumn>
-		<com:TTemplateColumn
-			HeaderText="<%[End]%>"
-			SortExpression="t.dateTimeEnd">
-			<prop:ItemTemplate>
-				<com:XDateFormat Pattern="mediumdate mediumtime" Value="<%# $this->Parent->Data['dateTimeEnd'] == null ? null : $this->Parent->Data['dateTimeEnd']->getTimestamp() %>" />
-			</prop:ItemTemplate>
-		</com:TTemplateColumn>
-		<com:TBoundColumn
-			HeaderText="<%[Duration]%>"
-			DataField="duration"
-			SortExpression="duration"/>
-		<com:TTemplateColumn>
-			<prop:ItemTemplate>
-				<a href="<%# $this->Service->constructUrl('task.edit', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>"
-				   class="btn btn-default btn-sm" title="<%[Modify]%>">
-					<span class="glyphicon glyphicon-edit"></span>
-				</a>
-			</prop:ItemTemplate>
-		</com:TTemplateColumn>
-		<com:TTemplateColumn>
-			<prop:ItemTemplate>
-				<a href="<%# $this->Service->constructUrl('task.delete', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>"
-				   class="btn btn-default btn-sm" title="<%[Delete]%>">
-					<span class="glyphicon glyphicon-remove"></span>
-				</a>
-			</prop:ItemTemplate>
-		</com:TTemplateColumn>
-		<prop:EmptyTemplate>
-			<div class="alert alert-info">
-				<span class="glyphicon glyphicon-info-sign"></span>
-				<%[You don't have any task.]%>
-			</div>
-		</prop:EmptyTemplate>
-	</com:XDataGrid>
+	<div class="table-responsive">
+		<com:XDataGrid
+			ID="LstTasks"
+			AutoGenerateColumns="false"
+			AllowSorting="true"
+			AllowPaging="true"
+			AllowCustomPaging="true"
+			PageSize="25"
+			OnSortCommand="lstTasks_OnSortCommand"
+			SortExpression="t.dateTimeBegin"
+			SortOrder="Desc"
+			CssClass="table table-striped">
+			<com:TTemplateColumn
+				HeaderText="<%[Project]%>"
+				SortExpression="p.no, p.description">
+				<prop:ItemTemplate>
+					<%# $this->Parent->Data['no'] . ($this->Parent->Data['project_description'] == '' ? '' : '-' . $this->Parent->Data['project_description']) %>
+				</prop:ItemTemplate>
+			</com:TTemplateColumn>
+			<com:TBoundColumn
+				HeaderText="<%[Description]%>"
+				DataField="description"/>
+			<com:TTemplateColumn
+				HeaderText="<%[Begin]%>"
+				SortExpression="t.dateTimeBegin">
+				<prop:ItemTemplate>
+					<com:TDateFormat Pattern="mediumdate mediumtime" Value="<%# $this->Parent->Data['dateTimeBegin']->getTimestamp() %>" />
+				</prop:ItemTemplate>
+			</com:TTemplateColumn>
+			<com:TTemplateColumn
+				HeaderText="<%[End]%>"
+				SortExpression="t.dateTimeEnd">
+				<prop:ItemTemplate>
+					<com:XDateFormat Pattern="mediumdate mediumtime" Value="<%# $this->Parent->Data['dateTimeEnd'] == null ? null : $this->Parent->Data['dateTimeEnd']->getTimestamp() %>" />
+				</prop:ItemTemplate>
+			</com:TTemplateColumn>
+			<com:TBoundColumn
+				HeaderText="<%[Duration]%>"
+				DataField="duration"
+				SortExpression="duration"/>
+			<com:TTemplateColumn>
+				<prop:ItemTemplate>
+					<a href="<%# $this->Service->constructUrl('task.edit', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>"
+					   class="btn btn-default btn-sm" title="<%[Modify]%>">
+						<span class="glyphicon glyphicon-edit"></span>
+					</a>
+				</prop:ItemTemplate>
+			</com:TTemplateColumn>
+			<com:TTemplateColumn>
+				<prop:ItemTemplate>
+					<a href="<%# $this->Service->constructUrl('task.delete', array('id' => $this->Parent->Data['id'], XPage::QS_RETURN_PAGE_PATH => $this->Page->PagePath)) %>"
+					   class="btn btn-default btn-sm" title="<%[Delete]%>">
+						<span class="glyphicon glyphicon-remove"></span>
+					</a>
+				</prop:ItemTemplate>
+			</com:TTemplateColumn>
+			<prop:EmptyTemplate>
+				<div class="alert alert-info">
+					<span class="glyphicon glyphicon-info-sign"></span>
+					<%[You don't have any task.]%>
+				</div>
+			</prop:EmptyTemplate>
+		</com:XDataGrid>
+	</div>
 	<com:XPager
 		ControlToPaginate="LstTasks"
 		OnPageIndexChanged="lstTasks_OnPageIndexChanged"/>

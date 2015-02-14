@@ -2,38 +2,40 @@
 	<com:XPager
 		ControlToPaginate="LstSummary"
 		OnPageIndexChanged="lstSummary_OnPageIndexChanged"/>
-	<com:XDataGrid
-		ID="LstSummary"
-		AutoGenerateColumns="false"
-		AllowSorting="true"
-		AllowPaging="true"
-		AllowCustomPaging="true"
-		PageSize="25"
-		OnSortCommand="lstSummary_OnSortCommand"
-		SortExpression="project_no, project_desc"
-		SortOrder="Desc"
-		CssClass="table table-striped">
-		<com:TTemplateColumn
-			HeaderText="<%[Project]%>"
-			SortExpression="project_no, project_desc">
-			<prop:ItemTemplate>
-				<%# $this->Parent->Data['project_no'] . ($this->Parent->Data['project_desc'] == '' ? '' : '-' . $this->Parent->Data['project_desc']) %>
-			</prop:ItemTemplate>
-		</com:TTemplateColumn>
-		<com:TBoundColumn
-			HeaderText="<%[Total]%>"
-			DataField="total"
-			DataFormatString="# SimpleTimeTracker\Util::roundToFraction({0}, 4, 2)"
-			SortExpression="total"
-			HeaderStyle.CssClass="text-right"
-			ItemStyle.CssClass="text-right" />
-		<prop:EmptyTemplate>
-			<div class="alert alert-info">
-				<span class="glyphicon glyphicon-info-sign"></span>
-				<%[You don't have any task.]%>
-			</div>
-		</prop:EmptyTemplate>
-	</com:XDataGrid>
+	<div class="table-responsive">
+		<com:XDataGrid
+			ID="LstSummary"
+			AutoGenerateColumns="false"
+			AllowSorting="true"
+			AllowPaging="true"
+			AllowCustomPaging="true"
+			PageSize="25"
+			OnSortCommand="lstSummary_OnSortCommand"
+			SortExpression="project_no, project_desc"
+			SortOrder="Desc"
+			CssClass="table table-striped">
+			<com:TTemplateColumn
+				HeaderText="<%[Project]%>"
+				SortExpression="project_no, project_desc">
+				<prop:ItemTemplate>
+					<%# $this->Parent->Data['project_no'] . ($this->Parent->Data['project_desc'] == '' ? '' : '-' . $this->Parent->Data['project_desc']) %>
+				</prop:ItemTemplate>
+			</com:TTemplateColumn>
+			<com:TBoundColumn
+				HeaderText="<%[Total]%>"
+				DataField="total"
+				DataFormatString="# SimpleTimeTracker\Util::roundToFraction({0}, 4, 2)"
+				SortExpression="total"
+				HeaderStyle.CssClass="text-right"
+				ItemStyle.CssClass="text-right" />
+			<prop:EmptyTemplate>
+				<div class="alert alert-info">
+					<span class="glyphicon glyphicon-info-sign"></span>
+					<%[You don't have any task.]%>
+				</div>
+			</prop:EmptyTemplate>
+		</com:XDataGrid>
+	</div>
 	<com:XPager
 		ControlToPaginate="LstSummary"
 		OnPageIndexChanged="lstSummary_OnPageIndexChanged"/>

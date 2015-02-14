@@ -25,6 +25,7 @@
 		ID="LstTasks"
 		EnableViewState="false">
 		<prop:HeaderTemplate>
+			<div class="table-responsive">
 			<table id="<%# $this->Parent->ClientID %>" class="table table-striped">
 				<thead>
 					<tr>
@@ -61,6 +62,7 @@
 		<prop:FooterTemplate>
 				<tbody>
 			</table>
+			</div>
 		</prop:FooterTemplate>
 
 		<prop:EmptyTemplate>
@@ -80,6 +82,7 @@
 		ID="LstHoursBeginEnd"
 		EnableViewState="false">
 		<prop:HeaderTemplate>
+			<div class="table-responsive">
 			<table id="<%# $this->Parent->ClientID %>" class="table table-striped">
 				<thead class="text-center">
 					<tr>
@@ -110,6 +113,7 @@
 		<prop:FooterTemplate>
 				<tbody>
 			</table>
+			</div>
 		</prop:FooterTemplate>
 	</com:TRepeater>
 </com:TContent>
