@@ -477,6 +477,11 @@ Thank you.]]></target>
 <source><![CDATA[New password saved. You can now sign in.]]></source>
 <target><![CDATA[New password saved. You can now sign in.]]></target>
 </trans-unit>
+
+<trans-unit id="88">
+<source><![CDATA[Summary]]></source>
+<target><![CDATA[Summary]]></target>
+</trans-unit>
 </body>
  </file>
 </xliff>

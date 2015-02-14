@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="fr_CA" datatype="plaintext" original="messages" date="2014-11-22T12:12:06Z" product-name="messages">
+ <file source-language="EN" target-language="fr_CA" datatype="plaintext" original="messages" date="2015-02-14T11:30:25Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -476,6 +476,11 @@ Merci.]]></target>
 <trans-unit id="87">
 <source><![CDATA[New password saved. You can now sign in.]]></source>
 <target><![CDATA[Nouveau mot de passe sauvegardé. Vous pouvez maintenant vous identifier.]]></target>
+</trans-unit>
+
+<trans-unit id="88">
+<source><![CDATA[Summary]]></source>
+<target><![CDATA[Sommaire]]></target>
 </trans-unit>
 </body>
  </file>

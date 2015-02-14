@@ -40,6 +40,7 @@
 				<com:XListItem Value="" Text="<%[Current task]%>" />
 				<com:TListItem Value="task.history" Text="<%[History]%>" />
 				<com:TListItem Value="task.timesheet" Text="<%[Timesheet]%>" />
+				<com:TListItem Value="task.summary" Text="<%[Summary]%>" />
 			</com:XMenu>
 			<div class="row">
 				<div class="col-sm-12">

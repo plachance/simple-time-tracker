@@ -79,7 +79,7 @@ class TaskController extends Controller
 			if(($pos = strpos($projectText, '-')) !== false)
 			{
 				list($projectNo, $projectDesc) = $this->parseProjectText($projectText);
-				
+
 				$where->add('p.no = :projectNo');
 				$where->add('ILIKE(p.description, :projectDesc) = TRUE');
 				$params['projectNo'] = $projectNo;
@@ -327,7 +327,7 @@ class TaskController extends Controller
 			$em->rollback();
 			throw $ex;
 		}
-		
+
 		return false;
 	}
 
@@ -379,7 +379,7 @@ class TaskController extends Controller
 			$em->rollback();
 			throw $ex;
 		}
-		
+
 		return false;
 	}
 
@@ -559,7 +559,7 @@ class TaskController extends Controller
 			throw $ex;
 		}
 	}
-	
+
 	/**
 	 * Parse the specified project text.
 	 * @param string $projectText Formatted project text (00000-Description).
@@ -577,8 +577,95 @@ class TaskController extends Controller
 			$projectNo = $projectText;
 			$projectDesc = null;
 		}
-		
+
 		return array($projectNo, $projectDesc);
+	}
+
+	/**
+	 * Get the summary of all work for the specified user.
+	 * @param int $userId
+	 * @param int $limit
+	 * @param int $offset
+	 * @param int $itemCount
+	 * @param string $sortExpr
+	 * @param int[] $years
+	 * @return mixed[int][string] Summary of all work for the specified user.
+	 * @throws TInvalidDataValueException if user id is null.
+	 */
+	public function getSummary($userId, $limit, $offset, &$itemCount, $sortExpr = null, $years = array())
+	{
+		if($userId == null)
+		{
+			throw new TInvalidDataValueException(Prado::localize('UserId must not be null.'));
+		}
+
+		$params = array(
+			':userId' => $userId
+		);
+
+		$sql = ' FROM task t
+			INNER JOIN project p USING (project_id)
+			WHERE t.user_id = :userId
+			GROUP BY p.no, p.description ';
+
+		$cnx = $this->getDbConnection();
+		$cnx->setActive(true);
+
+		$cmdCount = $cnx->createCommand('SELECT COUNT(*) FROM (SELECT 1 '
+			. $sql
+			. ') AS d');
+		foreach($params as $name => $value)
+		{
+			$cmdCount->bindValue($name, $value);
+		}
+
+		$itemCount = $cmdCount->queryScalar();
+
+		$select = array(
+			'p.description AS project_desc',
+			'p.no AS project_no',
+		);
+		foreach($years as $i => $year)
+		{
+			$year = (int)$year;
+			$yearI = ":year{$i}";
+			$params[$yearI] = $year;
+			$select[] = "SUM(CASE WHEN date_part('year', date_time_begin) = $yearI THEN "
+				. "EXTRACT(epoch FROM t.date_time_end - t.date_time_begin)/3600 "
+				. "ELSE 0 END) AS year_{$year}";
+		}
+		$select[] = "SUM(EXTRACT(epoch FROM t.date_time_end - t.date_time_begin)/3600) AS total";
+
+		$orderBy = $this->getOrderBy($sortExpr);
+
+		$cmd = $cnx->createCommand('SELECT '
+			. implode(', ', $select)
+			. $sql
+			. ' ORDER BY '
+			. implode(', ', $orderBy === null ? null : $orderBy->getParts())
+			. ' LIMIT :limit OFFSET :offset');
+		foreach($params as $name => $value)
+		{
+			$cmd->bindValue($name, $value);
+		}
+		$cmd->bindValue(':limit', (int)$limit);
+		$cmd->bindValue(':offset', (int)$offset);
+		return $cmd->query()->readAll();
+	}
+
+	/**
+	 * @param int $userId
+	 * @return int[] Work years for the specified user.
+	 */
+	public function getYears($userId)
+	{
+		$cnx = $this->getDbConnection();
+		$cnx->setActive(true);
+		$cmd = $cnx->createCommand('SELECT generate_series(date_part(\'year\', MIN(date_time_begin))::int, date_part(\'year\', MAX(date_time_begin))::int) as year
+			FROM task t
+			WHERE t.user_id = :userId');
+		$cmd->bindValue(':userId', $userId);
+		return $cmd->queryColumn();
 	}
 
 }
