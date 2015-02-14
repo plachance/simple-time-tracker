@@ -10,6 +10,8 @@
 		AllowCustomPaging="true"
 		PageSize="25"
 		OnSortCommand="lstSummary_OnSortCommand"
+		SortExpression="project_no, project_desc"
+		SortOrder="Desc"
 		CssClass="table table-striped">
 		<com:TTemplateColumn
 			HeaderText="<%[Project]%>"

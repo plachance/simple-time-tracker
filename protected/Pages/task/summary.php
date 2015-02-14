@@ -62,7 +62,7 @@ class summary extends XPage
 		$pageSize = $this->LstSummary->getPageSize();
 		$pageIndex = $this->LstSummary->getCurrentPageIndex();
 		$ctrl = new TaskController();
-		$summary = $ctrl->getSummary($this->getUser()->getId(), $pageSize, $pageSize * $pageIndex, $itemCount, $sortExpr == null ? 'p.no, p.description' : $sortExpr, $this->years);
+		$summary = $ctrl->getSummary($this->getUser()->getId(), $pageSize, $pageSize * $pageIndex, $itemCount, $sortExpr, $this->years);
 		$this->LstSummary->setVirtualItemCount($itemCount);
 		$this->LstSummary->setDataSource($summary);
 		$this->LstSummary->dataBind();

@@ -18,7 +18,21 @@ class XDataGrid extends TDataGrid
 	public function getSortExpression()
 	{
 		$expr = $this->getViewState('SortExpression');
-		return $expr == null ? null : $expr . ' ' . $this->getSortOrder();
+		if($expr === null)
+		{
+			return null;
+		}
+		elseif(($pos = strpos($expr, ',')) !== false)
+		{
+			$exprs = explode(',', $expr);
+			foreach($exprs as &$curExpr)
+			{
+				$curExpr = $curExpr . ' ' . $this->getSortOrder();
+			}
+			return implode(',', $exprs);
+		}
+		
+		return $expr . ' ' . $this->getSortOrder();
 	}
 
 	/**
@@ -26,7 +40,12 @@ class XDataGrid extends TDataGrid
 	 */
 	public function setSortExpression($value)
 	{
+		$expr = $this->getViewState('SortExpression');
 		$this->setViewState('SortExpression', TPropertyValue::ensureNullIfEmpty($value));
+		if($expr != $value)
+		{
+			$this->setSortOrder(null);
+		}
 	}
 
 	/**

@@ -44,6 +44,8 @@
 		AllowCustomPaging="true"
 		PageSize="25"
 		OnSortCommand="lstTasks_OnSortCommand"
+		SortExpression="t.dateTimeBegin"
+		SortOrder="Desc"
 		CssClass="table table-striped">
 		<com:TTemplateColumn
 			HeaderText="<%[Project]%>"

@@ -39,7 +39,7 @@ class history extends XPage
 		$pageSize = $this->LstTasks->getPageSize();
 		$pageIndex = $this->LstTasks->getCurrentPageIndex();
 		$ctrl = new TaskController();
-		$tasks = $ctrl->getTasks($this->getUser()->getId(), $pageSize, $pageSize * $pageIndex, $itemCount, $sortExpr == null ? 't.dateTimeBegin desc' : $sortExpr, $project, $dateTimeBeginFrom, $dateTimeBeginTo);
+		$tasks = $ctrl->getTasks($this->getUser()->getId(), $pageSize, $pageSize * $pageIndex, $itemCount, $sortExpr, $project, $dateTimeBeginFrom, $dateTimeBeginTo);
 		$this->LstTasks->setVirtualItemCount($itemCount);
 		$this->LstTasks->setDataSource($tasks);
 		$this->LstTasks->dataBind();
