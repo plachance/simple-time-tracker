@@ -9,6 +9,7 @@
 		</id>
 		<field name="no" type="integer" column="no" nullable="false"/>
 		<field name="description" type="text" column="description" nullable="true"/>
+		<field name="color" type="text" column="color" nullable="true"/>
 		<many-to-one field="user" target-entity="SimpleTimeTracker\Entities\User">
 			<join-columns>
 				<join-column name="user_id" referenced-column-name="user_id"/>

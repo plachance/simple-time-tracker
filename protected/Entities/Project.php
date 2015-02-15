@@ -18,6 +18,11 @@ class Project
      * @var string
      */
     private $description;
+	
+	/**
+     * @var string
+     */
+    private $color;
 
     /**
      * @var integer
@@ -74,6 +79,29 @@ class Project
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return Project
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
     }
 
     /**

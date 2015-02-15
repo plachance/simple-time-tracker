@@ -426,7 +426,7 @@ class TaskController extends Controller
 				$project->setUser($user);
 				$em->persist($project);
 			}
-
+			
 			$task = new Task();
 			$task->setProject($project);
 			$task->setDescription(TPropertyValue::ensureNullIfEmpty($description));
@@ -502,12 +502,13 @@ class TaskController extends Controller
 	 * Modify specified task.
 	 * @param int $id
 	 * @param string $projectText
+	 * @param string $color
 	 * @param string $description
 	 * @param DateTime $dateTimeBegin
 	 * @param DateTime $dateTimeEnd
 	 * @throws TInvalidDataValueException if id is null or does not exists.
 	 */
-	public function modifierTask($id, $projectText, $description, DateTime $dateTimeBegin, DateTime $dateTimeEnd = null)
+	public function modifierTask($id, $projectText, $color, $description, DateTime $dateTimeBegin, DateTime $dateTimeEnd = null)
 	{
 		if($id == null)
 		{
@@ -546,6 +547,7 @@ class TaskController extends Controller
 
 				$task->setProject($project);
 			}
+			$task->getProject()->setColor(TPropertyValue::ensureNullIfEmpty($color));
 			$task->setDescription(TPropertyValue::ensureNullIfEmpty($description));
 			$task->setDateTimeBegin($dateTimeBegin);
 			$task->setDateTimeEnd($dateTimeEnd);

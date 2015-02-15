@@ -482,6 +482,21 @@ Thank you.]]></target>
 <source><![CDATA[Summary]]></source>
 <target><![CDATA[Summary]]></target>
 </trans-unit>
+
+<trans-unit id="89">
+<source><![CDATA[Color :]]></source>
+<target><![CDATA[Color :]]></target>
+</trans-unit>
+
+<trans-unit id="90">
+<source><![CDATA[Color (Ex. : #47c3d3)]]></source>
+<target><![CDATA[Color (Ex. : #47c3d3)]]></target>
+</trans-unit>
+
+<trans-unit id="91">
+<source><![CDATA[Please specify a color in hexadecimal format. (Ex. : #47c3d3).]]></source>
+<target><![CDATA[Please specify a color in hexadecimal format. (Ex. : #47c3d3).]]></target>
+</trans-unit>
 </body>
  </file>
 </xliff>

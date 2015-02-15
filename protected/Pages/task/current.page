@@ -7,7 +7,12 @@
 					<prop:HeaderTemplate><div class="list-group"></prop:HeaderTemplate>
 
 					<prop:ItemTemplate>
-						<com:TLinkButton CausesValidation="false" OnCommand="Page.btnProject_OnCommand" CommandParameter="<%# $this->Data['no'] . '-' . $this->Data['description'] %>" CssClass="list-group-item">
+						<com:TLinkButton
+							CausesValidation="false"
+							OnCommand="Page.btnProject_OnCommand"
+							CommandParameter="<%# $this->Data['no'] . '-' . $this->Data['description'] %>"
+							CssClass="list-group-item"
+							Style.CustomStyle="<%# $this->Data['color'] == null ? '' : ('background-color:' . $this->Data['color']) %>">
 							<span class="glyphicon glyphicon-play"></span> <com:TLiteral Text="<%# $this->Data['no'] . ($this->Data['description'] == '' ? '' : '-' . $this->Data['description']) %>"/>
 						</com:TLinkButton>
 					</prop:ItemTemplate>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="fr_CA" datatype="plaintext" original="messages" date="2015-02-14T11:30:25Z" product-name="messages">
+ <file source-language="EN" target-language="fr_CA" datatype="plaintext" original="messages" date="2015-02-14T18:19:53Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -481,6 +481,21 @@ Merci.]]></target>
 <trans-unit id="88">
 <source><![CDATA[Summary]]></source>
 <target><![CDATA[Sommaire]]></target>
+</trans-unit>
+
+<trans-unit id="89">
+<source><![CDATA[Color :]]></source>
+<target><![CDATA[Couleur :]]></target>
+</trans-unit>
+
+<trans-unit id="90">
+<source><![CDATA[Color (Ex. : #47c3d3)]]></source>
+<target><![CDATA[Couleur (Ex. : #47c3d3)]]></target>
+</trans-unit>
+
+<trans-unit id="91">
+<source><![CDATA[Please specify a color in hexadecimal format. (Ex. : #47c3d3).]]></source>
+<target><![CDATA[Veuillez spécifier une couleur au format hexadécimal. (Ex. : #47c3d3).]]></target>
 </trans-unit>
 </body>
  </file>

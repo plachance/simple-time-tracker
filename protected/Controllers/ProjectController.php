@@ -33,8 +33,9 @@ class ProjectController extends Controller
 		$rsm->addScalarResult('project_id', 'project_id', Type::INTEGER);
 		$rsm->addScalarResult('no', 'no', Type::INTEGER);
 		$rsm->addScalarResult('description', 'description', Type::STRING);
+		$rsm->addScalarResult('color', 'color', Type::STRING);
 
-		return $em->createNativeQuery('SELECT p.project_id, p.no, p.description
+		return $em->createNativeQuery('SELECT p.project_id, p.no, p.description, p.color
 			FROM project p
 			INNER JOIN (SELECT project_id, MAX(date_time_begin) AS date_time_begin
 				FROM task

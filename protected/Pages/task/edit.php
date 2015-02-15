@@ -9,6 +9,7 @@ use SimpleTimeTracker\DateTime;
  * @author Patrice Lachance <patricelachance@gmail.com>
  * @property-read TContent $Content
  * @property-read TTextBox $TxtProject
+ * @property-read TTextBox $TxtColor
  * @property-read TTextBox $TxtDescription
  * @property-read TTextBox $TxtDateTimeBegin
  * @property-read TTextBox $TxtDateTimeEnd
@@ -62,6 +63,7 @@ class edit extends XPage
 			{
 				$this->setTaskId($task->getId());
 				$this->TxtProject->setText($task->getProject()->__toString());
+				$this->TxtColor->setText($task->getProject()->getColor());
 				$this->TxtDescription->setText($task->getDescription());
 				$this->TxtDateTimeBegin->setText($task->getDateTimeBegin()->format(DateTime::HTML5));
 				if($task->getDateTimeEnd())
@@ -82,7 +84,7 @@ class edit extends XPage
 		if($this->getIsValid())
 		{
 			$ctrl = new TaskController();
-			$ctrl->modifierTask($this->getTaskId(), $this->TxtProject->getText(), $this->TxtDescription->getText(), new DateTime($this->TxtDateTimeBegin->getText()), $this->TxtDateTimeEnd->getText() == '' ? null : new DateTime($this->TxtDateTimeEnd->getText()));
+			$ctrl->modifierTask($this->getTaskId(), $this->TxtProject->getText(), $this->TxtColor->getText(), $this->TxtDescription->getText(), new DateTime($this->TxtDateTimeBegin->getText()), $this->TxtDateTimeEnd->getText() == '' ? null : new DateTime($this->TxtDateTimeEnd->getText()));
 			$this->setMessage(Prado::localize('Task saved.'), MessageType::Success);
 			$this->getResponse()->redirect($this->getReturnUrl());
 		}
