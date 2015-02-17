@@ -16,7 +16,7 @@
 		<div class="form-group">
 			<com:TLabel ForControl="TxtColor" Text="<%[Color :]%>" CssClass="col-sm-4 control-label" />
 			<div class="col-sm-2">
-				<com:TTextBox ID="TxtColor" CssClass="form-control" Attributes.placeholder="<%[Color (Ex. : #47c3d3)]%>" />
+				<com:TTextBox ID="TxtColor" CssClass="form-control colorpicker" Attributes.placeholder="<%[Color (Ex. : #47c3d3)]%>" />
 			</div>
 			<div class="col-sm-8 col-sm-offset-4">
 				<com:TRegularExpressionValidator

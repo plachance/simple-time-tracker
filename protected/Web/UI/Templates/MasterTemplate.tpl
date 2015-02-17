@@ -7,8 +7,11 @@
 		<script src="<%/ components/jquery/jquery.min.js %>"></script>
 		<script>$.noConflict();</script>
 		<script src="<%/ components/bootstrap/js/bootstrap.min.js %>"></script>
+		<script src="<%/ components/tinycolor/tinycolor.js %>"></script>
+		<script src="<%/ components/bootstrap-colorpickersliders/src/bootstrap.colorpickersliders.js %>"></script>
 		<script src="<%/ static/js/global.js %>"></script>
 		<link href="<%/ components/bootstrap/css/bootstrap.min.css %>" rel="stylesheet" />
+		<link href="<%/ components/bootstrap-colorpickersliders/src/bootstrap.colorpickersliders.css %>" rel="stylesheet" />
 		<link href="<%/ static/css/global.css %>" rel="stylesheet" type="text/css" />
 		<script src="<%/ static/js/modernizr/modernizr.2.7.1.min.js %>"></script>
 		<script>
