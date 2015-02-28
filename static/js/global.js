@@ -17,9 +17,37 @@ jQuery(document).ready(function($)
 		disablePrototypeJS('hide', pluginsToDisable);
 	}
 	
-	$(".colorpicker").ColorPickerSliders({
-		color: '#47c3d3',
-		hsvpanel: true,
-		previewformat: "hex"
+	var initColorPicker = function(input, color)
+	{
+		if(input.data('cp-initialized') !== "true")
+		{
+			if(color === undefined || color === null)
+			{
+				color = '#47c3d3';
+			}
+			input.data('cp-initialized', "true");
+			input.ColorPickerSliders({
+				color: color,
+				hsvpanel: true,
+				previewformat: "hex"
+			});
+		}
+		return input;
+	};
+	
+	$(".colorpicker").each(function()
+	{
+		var $this = $(this);
+		if($this.val() === "")
+		{
+			$this.click(function()
+			{
+				initColorPicker($this).trigger("colorpickersliders.show");
+			});
+		}
+		else
+		{
+			initColorPicker($this, $this.val());
+		}
 	});
 });
