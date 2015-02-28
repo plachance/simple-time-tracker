@@ -50,4 +50,13 @@ jQuery(document).ready(function($)
 			initColorPicker($this, $this.val());
 		}
 	});
+	
+	$(".colorpicker").change(function()
+	{
+		var $this = $(this);
+		if($this.val() === "")
+		{
+			$this.trigger("colorpickersliders.updateColor", "white").val("");
+		}
+	});
 });
