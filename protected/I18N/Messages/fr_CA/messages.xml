@@ -40,7 +40,7 @@
 
 <trans-unit id="8">
 <source><![CDATA[Current task]]></source>
-<target><![CDATA[Tâche courrante]]></target>
+<target><![CDATA[Tâche courante]]></target>
 </trans-unit>
 
 <trans-unit id="9">
