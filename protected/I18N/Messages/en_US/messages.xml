@@ -497,6 +497,11 @@ Thank you.]]></target>
 <source><![CDATA[Please specify a color in hexadecimal format. (Ex. : #47c3d3).]]></source>
 <target><![CDATA[Please specify a color in hexadecimal format. (Ex. : #47c3d3).]]></target>
 </trans-unit>
+
+<trans-unit id="92">
+<source><![CDATA[Leave this field blank to start the task now.]]></source>
+<target><![CDATA[Leave this field blank to start the task now.]]></target>
+</trans-unit>
 </body>
  </file>
 </xliff>

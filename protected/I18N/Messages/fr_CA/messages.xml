@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="fr_CA" datatype="plaintext" original="messages" date="2015-02-14T18:19:53Z" product-name="messages">
+ <file source-language="EN" target-language="fr_CA" datatype="plaintext" original="messages" date="2015-02-28T14:26:26Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -496,6 +496,11 @@ Merci.]]></target>
 <trans-unit id="91">
 <source><![CDATA[Please specify a color in hexadecimal format. (Ex. : #47c3d3).]]></source>
 <target><![CDATA[Veuillez spécifier une couleur au format hexadécimal. (Ex. : #47c3d3).]]></target>
+</trans-unit>
+
+<trans-unit id="92">
+<source><![CDATA[Leave this field blank to start the task now.]]></source>
+<target><![CDATA[Laissez ce champ vide pour démarrer la tâche immédiatement.]]></target>
 </trans-unit>
 </body>
  </file>

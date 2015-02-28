@@ -387,11 +387,13 @@ class TaskController extends Controller
 	 * Create a new task.
 	 * @param string $projectText
 	 * @param string $description
+	 * @param DateTime $dateTimeBegin
+	 * @param DateTime $dateTimeEnd
 	 * @param int $userId
 	 * @return Task Created task.
 	 * @throws EntityNotFoundException if userId does not exists.
 	 */
-	public function createTask($projectText, $description, $userId)
+	public function createTask($projectText, $description, DateTime $dateTimeBegin = null, DateTime $dateTimeEnd = null, $userId = null)
 	{
 		$em = $this->getEntityManager();
 		$em->beginTransaction();
@@ -430,7 +432,8 @@ class TaskController extends Controller
 			$task = new Task();
 			$task->setProject($project);
 			$task->setDescription(TPropertyValue::ensureNullIfEmpty($description));
-			$task->setDateTimeBegin(new DateTime());
+			$task->setDateTimeBegin($dateTimeBegin === null ? new DateTime() : $dateTimeBegin);
+			$task->setDateTimeEnd($dateTimeEnd);
 			$task->setUser($user);
 			$em->persist($task);
 
