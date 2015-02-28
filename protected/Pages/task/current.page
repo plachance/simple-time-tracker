@@ -1,34 +1,6 @@
 <com:TContent ID="Content">
 	<div class="row">
-		<div class="col-sm-4 col-sm-push-8">
-			<div class="panel panel-default">
-				<div class="panel-heading"><h2 class="panel-title"><%[Last projects]%></h2></div>
-				<com:TRepeater ID="LstProjects">
-					<prop:HeaderTemplate><div class="list-group"></prop:HeaderTemplate>
-
-					<prop:ItemTemplate>
-						<com:TLinkButton
-							CausesValidation="false"
-							OnCommand="Page.btnProject_OnCommand"
-							CommandParameter="<%# $this->Data['no'] . '-' . $this->Data['description'] %>"
-							CssClass="list-group-item"
-							Style.CustomStyle="<%# $this->Data['color'] == null ? '' : ('background-color:' . $this->Data['color']) %>">
-							<span class="glyphicon glyphicon-play"></span> <com:TLiteral Text="<%# $this->Data['no'] . ($this->Data['description'] == '' ? '' : '-' . $this->Data['description']) %>"/>
-						</com:TLinkButton>
-					</prop:ItemTemplate>
-
-					<prop:FooterTemplate></div></prop:FooterTemplate>
-
-					<prop:EmptyTemplate>
-						<div class="alert alert-info bottom">
-							<span class="glyphicon glyphicon-info-sign"></span>
-							<%[You don't have any project.]%>
-						</div>
-					</prop:EmptyTemplate>
-				</com:TRepeater>
-			</div>
-		</div>
-		<div class="col-sm-8 col-sm-pull-4">
+		<div class="col-sm-8">
 			<div class="form-horizontal">
 				<com:TPanel ID="PnlTask">
 					<div class="form-group">
@@ -69,6 +41,34 @@
 						</com:XButton>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2 class="panel-title"><%[Last projects]%></h2></div>
+				<com:TRepeater ID="LstProjects">
+					<prop:HeaderTemplate><div class="list-group"></prop:HeaderTemplate>
+
+					<prop:ItemTemplate>
+						<com:TLinkButton
+							CausesValidation="false"
+							OnCommand="Page.btnProject_OnCommand"
+							CommandParameter="<%# $this->Data['no'] . '-' . $this->Data['description'] %>"
+							CssClass="list-group-item"
+							Style.CustomStyle="<%# $this->Data['color'] == null ? '' : ('background-color:' . $this->Data['color']) %>">
+							<span class="glyphicon glyphicon-play"></span> <com:TLiteral Text="<%# $this->Data['no'] . ($this->Data['description'] == '' ? '' : '-' . $this->Data['description']) %>"/>
+						</com:TLinkButton>
+					</prop:ItemTemplate>
+
+					<prop:FooterTemplate></div></prop:FooterTemplate>
+
+					<prop:EmptyTemplate>
+						<div class="alert alert-info bottom">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							<%[You don't have any project.]%>
+						</div>
+					</prop:EmptyTemplate>
+				</com:TRepeater>
 			</div>
 		</div>
 	</div>
