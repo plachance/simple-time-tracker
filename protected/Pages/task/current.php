@@ -101,7 +101,7 @@ class current extends XPage
 	{
 		$projectText = $param->getCommandParameter();
 		$ctrl = new TaskController();
-		$task = $ctrl->createTask($projectText, null, $this->getUser()->getId());
+		$task = $ctrl->createTask($projectText, null, null, null, $this->getUser()->getId());
 		$this->setTaskId($task->getId());
 		$this->showTask($task);
 	}
