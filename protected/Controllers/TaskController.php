@@ -511,7 +511,7 @@ class TaskController extends Controller
 	 * @param DateTime $dateTimeEnd
 	 * @throws TInvalidDataValueException if id is null or does not exists.
 	 */
-	public function modifierTask($id, $projectText, $color, $description, DateTime $dateTimeBegin, DateTime $dateTimeEnd = null)
+	public function modifyTask($id, $projectText, $color, $description, DateTime $dateTimeBegin, DateTime $dateTimeEnd = null)
 	{
 		if($id == null)
 		{

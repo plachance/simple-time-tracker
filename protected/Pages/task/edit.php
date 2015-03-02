@@ -84,7 +84,7 @@ class edit extends XPage
 		if($this->getIsValid())
 		{
 			$ctrl = new TaskController();
-			$ctrl->modifierTask($this->getTaskId(), $this->TxtProject->getText(), $this->TxtColor->getText(), $this->TxtDescription->getText(), new DateTime($this->TxtDateTimeBegin->getText()), $this->TxtDateTimeEnd->getText() == '' ? null : new DateTime($this->TxtDateTimeEnd->getText()));
+			$ctrl->modifyTask($this->getTaskId(), $this->TxtProject->getText(), $this->TxtColor->getText(), $this->TxtDescription->getText(), new DateTime($this->TxtDateTimeBegin->getText()), $this->TxtDateTimeEnd->getText() == '' ? null : new DateTime($this->TxtDateTimeEnd->getText()));
 			$this->setMessage(Prado::localize('Task saved.'), MessageType::Success);
 			$this->getResponse()->redirect($this->getReturnUrl());
 		}
