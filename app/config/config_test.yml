@@ -1,0 +1,29 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+        name: MOCKSESSID
+    profiler:
+        collect: false
+    default_locale: en #Required for tests on redirection from /
+
+doctrine:
+    dbal:
+        dbname:   "%database_name%_test"
+
+liip_functional_test: ~
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+security:
+    firewalls:
+        main:
+            http_basic: ~

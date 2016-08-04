@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/..
+
+ENV="test"
+
+export SYMFONY_ENV=$ENV
+
+./bin/bootstrap $ENV
+
+./bin/console doctrine:database:create --if-not-exists
+./bin/console doctrine:migrations:migrate --no-interaction
+
+./bin/console security:check
+
+./vendor/bin/php-cs-fixer fix --dry-run
+
+./vendor/bin/phpunit

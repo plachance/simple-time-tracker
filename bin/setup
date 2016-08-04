@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/..
+
+if [ "$1" == "" ]; then
+	ENV="dev"
+else
+	ENV=$1
+fi
+
+export SYMFONY_ENV=$ENV
+
+./bin/bootstrap $ENV
+
+./bin/console doctrine:database:drop --if-exists --force
+./bin/console doctrine:database:create
+./bin/console doctrine:migrations:migrate --no-interaction
+./bin/console cache:warmup
+./bin/console assetic:dump

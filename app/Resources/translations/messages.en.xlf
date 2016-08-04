@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="7e94fd31ac489c6edc9b9ee8820b5500" resname="Create project">
+        <source>Create project</source>
+        <target>Create project</target>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354" resname="Save">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="ea4788705e6873b424c65e91c2846b19" resname="Cancel">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="54e1d44609e3abed11f6e1eb6ae54988" resname="Projects">
+        <source>Projects</source>
+        <target>Projects</target>
+      </trans-unit>
+      <trans-unit id="bafd7322c6e97d25b6299b5d6fe8920b" resname="No">
+        <source>No</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="b5a7adde1af5c87d7fd797b6245c2a39" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="7f090bbab1cc7f9c08bf4e54d932d3c0" resname="Modify">
+        <source>Modify</source>
+        <target>Modify</target>
+      </trans-unit>
+      <trans-unit id="f2a6c498fb90ee345d997f888fce3b18" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="3cc8b4c2d28c669154e2aeb0d4c0d54a" resname="Delete project">
+        <source>Delete project</source>
+        <target>Delete project</target>
+      </trans-unit>
+      <trans-unit id="07c2e83c6e2ed2e9cd0dde08ad3a76e4" resname="Are you sure you want to delete this project?">
+        <source>Are you sure you want to delete this project?</source>
+        <target>Are you sure you want to delete this project?</target>
+      </trans-unit>
+      <trans-unit id="99dea78007133396a7b8ed70578ac6ae" resname="Login">
+        <source>Login</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="d3d2e617335f08df83599665eef8a418" resname="Close">
+        <source>Close</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="cac81c648846c9b8c3e6085a45782c7e" resname="Username:">
+        <source>Username:</source>
+        <target>Username:</target>
+      </trans-unit>
+      <trans-unit id="b341a59d5636ed3d6a819137495b08a0" resname="Password:">
+        <source>Password:</source>
+        <target>Password:</target>
+      </trans-unit>
+      <trans-unit id="878530871f0db73f004f5bd6591eeb76" resname="Remember me">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="9c0f21d13609c634ed11fdef5006227b" resname="Create task">
+        <source>Create task</source>
+        <target>Create task</target>
+      </trans-unit>
+      <trans-unit id="290612199861c31d1036b185b4e69b75" resname="Summary">
+        <source>Summary</source>
+        <target>Summary</target>
+      </trans-unit>
+      <trans-unit id="9e727fdd3aec8274f46685441900280d" resname="Project">
+        <source>Project</source>
+        <target>Project</target>
+      </trans-unit>
+      <trans-unit id="96b0141273eabab320119c467cdcaf17" resname="Total">
+        <source>Total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="034c8e05d4361043cdb3d105e83b6848" resname="Current task">
+        <source>Current task</source>
+        <target>Current task</target>
+      </trans-unit>
+      <trans-unit id="f23460318e154389d2838cc1f23621e2" resname="Project:">
+        <source>Project:</source>
+        <target>Project:</target>
+      </trans-unit>
+      <trans-unit id="d0042a700e9bdf79689d63ee6846dc0e" resname="Description:">
+        <source>Description:</source>
+        <target>Description:</target>
+      </trans-unit>
+      <trans-unit id="d5249ab5c100a2adf85c6c8b8d58aa96" resname="Begin:">
+        <source>Begin:</source>
+        <target>Begin:</target>
+      </trans-unit>
+      <trans-unit id="60293a4ec6b989d4fe4da57ab10dcd33" resname="End:">
+        <source>End:</source>
+        <target>End:</target>
+      </trans-unit>
+      <trans-unit id="11a755d598c0c417f9a36758c3da7481" resname="Stop">
+        <source>Stop</source>
+        <target>Stop</target>
+      </trans-unit>
+      <trans-unit id="51cfbcff36da74a9fc47f3a5140f99f2" resname="Restart">
+        <source>Restart</source>
+        <target>Restart</target>
+      </trans-unit>
+      <trans-unit id="f419443ef00ac18578fce0ac981156a4" resname="Start a new task">
+        <source>Start a new task</source>
+        <target>Start a new task</target>
+      </trans-unit>
+      <trans-unit id="1d4c0dc79333e92d144ed95a16728298" resname="Pinned projects">
+        <source>Pinned projects</source>
+        <target>Pinned projects</target>
+      </trans-unit>
+      <trans-unit id="87d229c2fb94f85499241f13f4052bc4" resname="You don't have any pinned projects.">
+        <source>You don't have any pinned projects.</source>
+        <target>You don't have any pinned projects.</target>
+      </trans-unit>
+      <trans-unit id="b926c0822706efc6e072c17987ea6f58" resname="Timesheet">
+        <source>Timesheet</source>
+        <target>Timesheet</target>
+      </trans-unit>
+      <trans-unit id="dd1f775e443ff3b9a89270713580a51b" resname="Previous">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="1e48616f804157846a2dd4289f6b3fb9" resname="Week:">
+        <source>Week:</source>
+        <target>Week:</target>
+      </trans-unit>
+      <trans-unit id="498f79c4c5bbde77f1bceb6c86fd0f6d" resname="Show">
+        <source>Show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="10ac3d04253ef7e1ddc73e6091c0cd55" resname="Next">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="49ee3087348e8d44e1feda1917443987" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="885b3c534ec909cf87987897bfba2235" resname="Arrival">
+        <source>Arrival</source>
+        <target>Arrival</target>
+      </trans-unit>
+      <trans-unit id="5be0fabaab8bf9ac47226a4afec82698" resname="Departure">
+        <source>Departure</source>
+        <target>Departure</target>
+      </trans-unit>
+      <trans-unit id="16d2b386b2034b9488996466aaae0b57" resname="History">
+        <source>History</source>
+        <target>History</target>
+      </trans-unit>
+      <trans-unit id="1a06729125544cab7cee73195fc044f0" resname="Begin">
+        <source>Begin</source>
+        <target>Begin</target>
+      </trans-unit>
+      <trans-unit id="87557f11575c0ad78e4e28abedc13b6e" resname="End">
+        <source>End</source>
+        <target>End</target>
+      </trans-unit>
+      <trans-unit id="e02d2ae03de9d493df2b6b2d2813d302" resname="Duration">
+        <source>Duration</source>
+        <target>Duration</target>
+      </trans-unit>
+      <trans-unit id="dc5458cbf6935d24490c83f49e40b5db" resname="Modify task">
+        <source>Modify task</source>
+        <target>Modify task</target>
+      </trans-unit>
+      <trans-unit id="d7bc9d5a2e9ac8e09cb03ce6e21569a9" resname="Delete task">
+        <source>Delete task</source>
+        <target>Delete task</target>
+      </trans-unit>
+      <trans-unit id="e3dc2ec99bb0b23748dd86b7ac68429c" resname="Are you sure you want to delete this task?">
+        <source>Are you sure you want to delete this task?</source>
+        <target>Are you sure you want to delete this task?</target>
+      </trans-unit>
+      <trans-unit id="6c7195551da0802a39b5e2bc7187df54" resname="Toggle navigation">
+        <source>Toggle navigation</source>
+        <target>Toggle navigation</target>
+      </trans-unit>
+      <trans-unit id="f01167b3612c249011c61746dd86d07b" resname="Departure time">
+        <source>Departure time</source>
+        <target>Departure time</target>
+      </trans-unit>
+      <trans-unit id="ae0e7eb9b0056c091b6aedc3636498a5" resname="Departure time:">
+        <source>Departure time:</source>
+        <target>Departure time:</target>
+      </trans-unit>
+      <trans-unit id="9c406be997543ac01a15830347831c47" resname="No:">
+        <source>No:</source>
+        <target>No:</target>
+      </trans-unit>
+      <trans-unit id="3c5e891bff07947cbae2fda89162df9f" resname="Pinned">
+        <source>Pinned</source>
+        <target>Pinned</target>
+      </trans-unit>
+      <trans-unit id="74cce809b8d87026f142e6d8a6397aee" resname="Select a value">
+        <source>Select a value</source>
+        <target>Select a value</target>
+      </trans-unit>
+      <trans-unit id="0323de4f66a1700e2173e9bcdce02715" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="d7ae9e38a58159c3823bb492176620f0" resname="Exit impersonation">
+        <source>Exit impersonation</source>
+        <target>Exit impersonation</target>
+      </trans-unit>
+      <trans-unit id="4994a8ffeba4ac3140beb89e8d41f174" resname="Language">
+        <source>Language</source>
+        <target>Language</target>
+      </trans-unit>
+      <trans-unit id="5c9b674ad0f8710d84f05828661014aa" resname="Project created.">
+        <source>Project created.</source>
+        <target>Project created.</target>
+      </trans-unit>
+      <trans-unit id="b16be254bc6dac39bae7ea2517533c27" resname="Project saved.">
+        <source>Project saved.</source>
+        <target>Project saved.</target>
+      </trans-unit>
+      <trans-unit id="2f2b4b0cabdcd8faedc6733449b25770" resname="Task created.">
+        <source>Task created.</source>
+        <target>Task created.</target>
+      </trans-unit>
+      <trans-unit id="850752018b41496b5681e82f07fa7116" resname="Task saved.">
+        <source>Task saved.</source>
+        <target>Task saved.</target>
+      </trans-unit>
+      <trans-unit id="fb5a0e846f382e4f81b1c4daddcf6e4e" resname="Color:">
+        <source>Color:</source>
+        <target>Color:</target>
+      </trans-unit>
+      <trans-unit id="39476797e4c8b67863f1f9dc9a6e9970" resname="Color (E.g.: #47c3d3)">
+        <source>Color (E.g.: #47c3d3)</source>
+        <target>Color (E.g.: #47c3d3)</target>
+      </trans-unit>
+      <trans-unit id="07a13ad9bef751441b5417be73001b85" resname="Please specify a color in hexadecimal format. (E.g.: #47c3d3).">
+        <source>Please specify a color in hexadecimal format. (E.g.: #47c3d3).</source>
+        <target>Please specify a color in hexadecimal format. (E.g.: #47c3d3).</target>
+      </trans-unit>
+      <trans-unit id="6d88e0cbcb9e2878aa29ef32e420d05f" resname="Modify project">
+        <source>Modify project</source>
+        <target>Modify project</target>
+      </trans-unit>
+      <trans-unit id="27872acf78809d2c280344ea7f0d48c7" resname="Project %no% summary">
+        <source>Project %no% summary</source>
+        <target>Project %no% summary</target>
+      </trans-unit>
+      <trans-unit id="66d1207f7abfe5ca43ac83915d599051" resname="Time per user">
+        <source>Time per user</source>
+        <target>Time per user</target>
+      </trans-unit>
+      <trans-unit id="8f9bfe9d1345237cb3b2b205864da075" resname="User">
+        <source>User</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="3211769ad7ca81f0224ddc79ba864f72" resname="Time (in hours)">
+        <source>Time (in hours)</source>
+        <target>Time (in hours)</target>
+      </trans-unit>
+      <trans-unit id="2693611080787e269455f3574dab48b9" resname="Time per description">
+        <source>Time per description</source>
+        <target>Time per description</target>
+      </trans-unit>
+      <trans-unit id="4b4f834f2ed1bb6886102a136614fa76" resname="Profile settings">
+        <source>Profile settings</source>
+        <target>Profile settings</target>
+      </trans-unit>
+      <trans-unit id="d0834fcec6337785ee749c8f5464f6f6" resname="Preferences">
+        <source>Preferences</source>
+        <target>Preferences</target>
+      </trans-unit>
+      <trans-unit id="0b39c5aca15b84b1ad53a94d6b3feb78" resname="Change password">
+        <source>Change password</source>
+        <target>Change password</target>
+      </trans-unit>
+	  <trans-unit id="Workday length (in hours):" resname="Workday length (in hours):">
+        <source>Workday length (in hours):</source>
+        <target>Workday length (in hours):</target>
+      </trans-unit>
+	  <trans-unit id="Repeat Password:" resname="Repeat Password:">
+        <source>Repeat Password:</source>
+        <target>Repeat Password:</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

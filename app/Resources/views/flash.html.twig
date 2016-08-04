@@ -1,0 +1,44 @@
+{% macro render_messages(type, messages) %}
+	{% set messages_length = messages|length %}
+	{% if messages_length > 0 %}
+		{% set icons = {
+			info: 'info-sign',
+			success: 'ok-sign',
+			warning: 'warning-sign',
+			danger: 'remove-sign',
+		} %}
+		<div class="alert alert-{{ type }} alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}"><span aria-hidden="true">&times;</span></button>
+			<span class="glyphicon glyphicon-{{ icons[type] }}" {{ messages_length > 1 ? 'style="float:left"'}}  aria-hidden="true"></span>
+			{% if messages_length == 1 %}
+				{{ messages|first }}
+			{% else %}
+				<ul>
+					{% for message in messages %}
+						<li>
+							{{ message }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	{% endif %}
+{% endmacro  %}
+
+{% macro session_flash() %}
+	{% import _self as flash %}
+	{% if app.session.flashbag.peekAll|length > 0 %}
+		{% set mapping = ['danger', 'warning', 'success', 'info'] %}
+		{% set flashes = {} %}
+		{% for type in mapping %}
+			{% set flashes = flashes|merge({(type): app.session.flashbag.get(type)}) %}
+		{% endfor %}
+		{% for type, messages in app.session.flashbag.all %}
+			{% set flashes = flashes|merge({info: flashes['info']|merge(messages)}) %}
+		{% endfor %}
+
+		{% for type, messages in flashes %}
+			{{ flash.render_messages(type, messages) }}
+		{% endfor %}
+	{% endif %}
+{% endmacro  %}

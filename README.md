@@ -6,15 +6,38 @@ Minimalist time tracking software.
 Requirements
 ------------
 
-PHP 5.3 and up.
-PostgreSQL 9 and up.
+* PHP 7
+* ext-intl
+* ext-apcu
+* PostgreSQL 9.5+
+* Composer
 
 Installation
 ------------
 
-* Copy `.htaccess.dist` to `.htaccess`. Edit to your setup.
-* Copy `/protected/application.default.php` to `/protected/application.php`. Edit to your setup.
-* Create a database as you specified in `application.php`.
-* Download, extract and run ```php composer.phar install```
-* Run ```php console.php orm:schema-tool:create```.
-* Create users with ```php console.php stt:user:create```.
+* Run `./bin/setup prod` and follow the instructions.
+* Run `./bin/acl` to setup proper ACLs.
+
+Update
+------
+
+* If you update from 1.0, run `./bin/console doctrine:migrations:version 00000000000000 --add`.
+* Run `./bin/update prod` and follow the instructions.
+
+Usage
+-----
+
+* Create users with ```./bin/console :user:create -e prod```
+* Change existing user's password with ```./bin/console :user:change-password -e prod```
+
+Contributing
+------------
+
+Run `./bin/setup` to set up the project in an initial state or to reset the the project back to its initial state.
+Run `./bin/update` after you run `git pull` to ensure the project is up to update.
+Make sure there's no known security vulnerabilities, the code respect standards and all tests pass by running `./bin/test`.
+
+License
+-------
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

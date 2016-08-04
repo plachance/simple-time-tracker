@@ -1,13 +1,14 @@
-# Libraries and Cache
+/app/config/parameters.yml
+/build/
+/nbproject/private/
+/phpunit.xml
+/var/
 /vendor/
-/protected/runtime/
-/components/
-/assets/
-/composer.lock
-
-#Project config files.
-/protected/application.php
-/.htaccess
+/web/bundles/
+/web/components/
+/web/assets/
+*.cache
+*~
 
 #Project files.
 /.project

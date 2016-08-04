@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Profile settings'|trans %}
+
+{% form_theme form_preferences _self %}
+{% form_theme form_change_password _self %}
+{% block _preferences_dayLength_widget %}
+    {% set type = type|default('number') %}
+    {{ block('form_widget_simple') }}
+{% endblock _preferences_dayLength_widget %}
+
+{%- block form_label_class -%}
+col-sm-4
+{%- endblock form_label_class -%}
+
+{%- block form_group_class -%}
+{% if name == 'dayLength' %}
+	col-sm-4
+{% else %}
+	col-sm-8
+{% endif %}
+{%- endblock form_group_class -%}
+
+{% block body %}
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">{% trans %}Preferences{% endtrans %}</h3>
+					</div>
+					<div class="panel-body">
+						{{ form_start(form_preferences) }}
+						{{ form_widget(form_preferences) }}
+						{{ form_end(form_preferences) }}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">{% trans %}Change password{% endtrans %}</h3>
+					</div>
+					<div class="panel-body">
+						{{ form_start(form_change_password) }}
+						{{ form_widget(form_change_password) }}
+						{{ form_end(form_change_password) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% set title = "Project %no% summary"|trans({'%no%': project_no}) %}
+{% set time_per_user_total = time_per_user|last %}
+{% set time_per_user = time_per_user|slice(0, -1) %}
+{% set time_per_description_total = time_per_description|last %}
+{% set time_per_description = time_per_description|slice(0, -1) %}
+
+{% block body %}
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover datatables" data-order='[[0, "asc"]]' data-searching="false" data-paging="false" data-info="false">
+				<caption>{% trans %}Time per user{% endtrans %}</caption>
+                <thead class="thead-default">
+                    <tr>
+                        <th>{% trans %}User{% endtrans %}</th>
+                        <th>{% trans %}Time (in hours){% endtrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in time_per_user %}
+                        <tr>
+                            <td>{{ row.username }}</td>
+                            <td>{{ roundToFraction(row.time, 4, 2)|localizednumber }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+				<tfoot>
+					<tr>
+						<th>{% trans %}Total{% endtrans %}</th>
+						<th>{{ roundToFraction(time_per_user_total.time, 4, 2)|localizednumber }}</th>
+					</tr>
+                </tfoot>
+            </table>
+        </div>
+		<div class="table-responsive">
+            <table class="table table-striped table-hover datatables" data-order='[[0, "asc"]]' data-searching="false" data-paging="false" data-info="false">
+				<caption>{% trans %}Time per description{% endtrans %}</caption>
+                <thead class="thead-default">
+                    <tr>
+                        <th>{% trans %}Description{% endtrans %}</th>
+                        <th>{% trans %}Time (in hours){% endtrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in time_per_description %}
+                        <tr>
+                            <td>{{ row.description }}</td>
+                            <td>{{ roundToFraction(row.time, 4, 2)|localizednumber }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+				<tfoot>
+					<tr>
+						<th>{% trans %}Total{% endtrans %}</th>
+						<th>{{ roundToFraction(time_per_description_total.time, 4, 2)|localizednumber }}</th>
+					</tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

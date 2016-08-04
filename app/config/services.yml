@@ -1,0 +1,27 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+    app.twig_extension:
+        class: AppBundle\Util\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    app.task_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments: ['AppBundle:Task']
+
+    app.form.type.task:
+        class: AppBundle\Form\TaskType
+        arguments: ['@translator']
+        tags:
+            - { name: form.type }

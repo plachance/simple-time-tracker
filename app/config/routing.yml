@@ -1,0 +1,25 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%routes_locales%'
+
+root:
+    path:     /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: index
+        permanent: false
+
+index:
+    path:     /{_locale}
+    requirements:
+        _locale: '%routes_locales%'
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: task_current
+        permanent: false
+
+logout:
+    path: /logout

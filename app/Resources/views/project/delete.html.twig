@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Delete project'|trans %}
+
+{% block body %}
+	<div class="col-xs-12">
+		<p>{% trans %}Are you sure you want to delete this project?{% endtrans %}</p>
+		
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<div>
+			<input type="submit" value="{% trans %}Delete{% endtrans %}" class="btn btn-default btn-primary" />
+			<a href="{{ app.request.query.get('r')|default(path('project_index')) }}" class="btn btn-default">{% trans %}Cancel{% endtrans %}</a>
+		</div>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

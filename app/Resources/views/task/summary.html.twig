@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Summary'|trans %}
+{% set years = [] %}
+{% for year in summary|first|keys %}
+	{% if year starts with 'year_' %}
+		{% set years = years|merge([year|slice(5)]) %}
+	{% endif %}
+{% endfor %}
+
+{% block body %}
+	<div class="col-xs-12">
+		<div class="table-responsive">
+            <table class="table table-striped table-hover datatables">
+                <thead class="thead-default">
+                    <tr>
+                        <th>{% trans %}Project{% endtrans %}</th>
+							{% for year in years %}
+							<th class="text-right">{{ year }}</th>
+							{% endfor %}
+                        <th class="text-right">{% trans %}Total{% endtrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in summary %}
+                        <tr>
+                            <td>{{ project['project_no'] ~ (project['project_desc'] ? ('-' ~ project['project_desc'])) }}</td>
+							{% for year in years %}
+								<td class="text-right">{{ roundToFraction(project['year_' ~ year], 4, 2)|localizednumber }}</td>
+								{% endfor %}
+                            <td class="text-right">{{ roundToFraction(project['total'], 4, 2)|localizednumber }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+	</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/..
+
+if [ "$1" == "" ]; then
+	ENV="dev"
+else
+	ENV=$1
+fi
+
+if [ "$ENV" == "ci" ]; then
+	./vendor/bin/php-cs-fixer fix --dry-run
+else
+	./vendor/bin/php-cs-fixer fix
+fi

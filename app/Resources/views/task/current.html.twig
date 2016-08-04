@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Current task'|trans %}
+
+{% block body %}
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="form-horizontal">
+					{% if task is defined and task is not null %}
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{% trans %}Project:{% endtrans %}</label>
+							<div class="col-sm-8">
+								<p class="form-control-static">{{ task.project }}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{% trans %}Begin:{% endtrans %}</label>
+							<div class="col-sm-8">
+								<p class="form-control-static">{{ task.dateTimeBegin ? task.dateTimeBegin|localizeddate('medium', 'medium') }}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">{% trans %}End:{% endtrans %}</label>
+							<div class="col-sm-8">
+								<p class="form-control-static">{{ task.dateTimeEnd ? task.dateTimeEnd|localizeddate('medium', 'medium') }}</p>
+							</div>
+						</div>
+					{% endif %}
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+							{% if task is defined and task is not null %}
+								{% if task.getDateTimeEnd() is null %}
+									{{ form_start(stop_form) }}
+									{{ form_widget(stop_form) }}
+									<button type="submit" class="btn btn-primary">
+										<span class="glyphicon glyphicon-stop" aria-hidden="true"></span> {% trans %}Stop{% endtrans %}
+									</button>
+									{{ form_end(stop_form) }}
+								{% else %}
+									{{ form_start(restart_form, {attr: {style: 'display:inline'}}) }}
+									{{ form_widget(restart_form) }}
+									<button type="submit" class="btn btn-primary">
+										<span class="glyphicon glyphicon-play" aria-hidden="true"></span> {% trans %}Restart{% endtrans %}
+									</button>
+									{{ form_end(restart_form) }}
+								{% endif %}
+							{% endif %}
+							{% if task is not defined or task is null or task.getDateTimeEnd() is not null %}
+								<a href="{{ path('task_new', {'r': app.request.requestUri}) }}" class="btn btn-default">
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}Start a new task{% endtrans %}
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-heading"><h2 class="panel-title"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> {% trans %}Pinned projects{% endtrans %}</h2></div>
+					{% if pinned_projects is empty %}
+						<div class="alert alert-info bottom">
+							<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+							{% trans %}You don't have any pinned projects.{% endtrans %}
+						</div>
+					{% else %}
+						<div class="list-group">
+							{% for project in pinned_projects %}
+								<a href="{{ path('task_quickstart', {id: project.getId()}) }}" class="list-group-item{{ project.getId() == task.getProject().getId() and task.getDateTimeEnd() is null ? ' active' }}"{{ project.color is not null ? (' style="background-color:' ~ project.color ~ '"')|raw }}>
+									<span class="glyphicon glyphicon-play" aria-hidden="true"></span> {{ project }}
+								</a>
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

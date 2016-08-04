@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Modify project'|trans %}
+
+{% form_theme form _self %}
+{% block form_group_class -%}
+	{% if name == 'description' %}
+		col-sm-8
+	{% elseif name == 'color' %}
+		col-sm-4 col-md-3
+	{% else %}
+		col-sm-2
+	{% endif %}
+{%- endblock form_group_class %}
+
+{% block body %}
+	<div class="col-xs-12">
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<div class="form-group">
+			<div class="col-sm-10 col-sm-offset-2">
+				<input type="submit" value="{% trans %}Save{% endtrans %}" class="btn btn-default btn-primary" />
+				<a href="{{ app.request.query.get('r')|default(path('project_index')) }}" class="btn btn-default">{% trans %}Cancel{% endtrans %}</a>
+			</div>
+		</div>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

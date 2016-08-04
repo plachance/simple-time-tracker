@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% set title = 'Projects'|trans %}
+{% set role_admin_granted = is_granted('ROLE_ADMIN') %}
+
+{% block body %}
+    <div class="col-xs-12">
+		<ul class="list-unstyled list-inline">
+			<li><a href="{{ path('project_new', {'r': app.request.requestUri}) }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}Create project{% endtrans %}</a></li>
+		</ul>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover datatables" data-order='[[0, "desc"], [1, "desc"]]'>
+                <thead class="thead-default">
+                    <tr>
+                        <th>{% trans %}No{% endtrans %}</th>
+                        <th>{% trans %}Description{% endtrans %}</th>
+                        <th data-orderable="false" data-searchable="false"></th>
+                        <th data-orderable="false" data-searchable="false"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td>
+								{% if role_admin_granted %}
+									<a href="{{ path('project_summary', {projectNo: project.no}) }}">{{ project.no }}</a>
+								{% else %}
+									{{ project.no }}
+								{% endif %}
+							</td>
+                            <td>{{ project.description }}</td>
+                            <td>
+                                <a href="{{ path('project_edit', { 'id': project.id, 'r': app.request.requestUri }) }}"
+                                   class="btn btn-default btn-sm" title="{% trans %}Modify{% endtrans %}" role="button">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('project_delete', { 'id': project.id, 'r': app.request.requestUri }) }}"
+                                   class="btn btn-default btn-sm" title="{% trans %}Delete{% endtrans %}" role="button">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% from 'flash.html.twig' import session_flash %}
+{% set language = app.request.locale|split('_')[0] %}
+<!DOCTYPE html>
+<html lang="{{ language }}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ title is defined and title is not null ? (title ~ ' - ') }}Simple Time Tracker</title>
+        {% block stylesheets %}
+			{% stylesheets
+				'components/bootstrap/dist/css/bootstrap.css'
+				'components/datatables/media/css/dataTables.bootstrap.css'
+				'components/select2/dist/css/select2.css'
+				'components/select2-bootstrap-theme/dist/select2-bootstrap.css'
+				'components/bootstrap-colorpickersliders/dist/bootstrap.colorpickersliders.css'
+				'css/global.css'
+				filter='cssrewrite,?scssphp'
+				output='assets/css/global.css'
+			%}
+			<link rel="stylesheet" href="{{ asset_url }}" />
+			{% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">{% trans %}Toggle navigation{% endtrans %}</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('index') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="visible-sm-inline visible-md-inline"> STT</span><span class="visible-xs-inline visible-lg-inline"> Simple Time Tracker</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+					{{ knp_menu_render('AppBundle:Builder:mainMenu', {currentClass: 'active', allow_safe_labels: true}) }}
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {{ knp_menu_render('AppBundle:Builder:userMenu', {currentClass: 'active', allow_safe_labels: true}) }}
+                    {% else %}
+                        <a href="{{ path('login') }}" class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans %}Login{% endtrans %}</a>
+                    {% endif %}
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown first last" title="{% trans %}Language{% endtrans %}">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<span class="glyphicon glyphicon-flag"></span> <span class="visible-xs-inline">{% trans %}Language{% endtrans %}</span> <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu menu_level_1">
+								{% set first_locale_label = locales|first %}
+								{% set last_locale_label = locales|last %}
+								{% for locale, label in locales %}
+									<li class="{{ locale == app.request.locale ? 'active"' }}{{ locale == first_locale_label ? ' first' }}{{ locale == last_locale_label ? ' last' }}">
+										<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': locale})|merge(app.request.query)) }}">
+											{{ label }}
+										</a> 
+									</li>
+								{% endfor %}
+							</ul>
+						</li>
+					</ul>
+					{% if app.user is not null %}
+						{% set departure_time =  task_repository.getDepartureTime(app.user) %}
+						<p class="navbar-text navbar-right" title="{% trans %}Departure time{% endtrans %}">
+							<span class="visible-xs-inline">{% trans %}Departure time:{% endtrans %}</span>
+							<span class="label label-{{ departure_time > date() ? 'info' : (departure_time > date('-30 minutes') ? 'warning' : 'danger') }} label-lg">{{ departure_time|localizeddate('none', 'medium') }}</span>
+						</p>
+					{% endif %}
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container">
+            <div class="row row-content">
+                <div class="col-xs-12">
+                    {% if title is defined and title is not null %}
+                        <div class="row row-title">
+                            <div class="col-xs-12"><h1 class="text-center">{{ title }}</h1></div>
+                        </div>
+                    {% endif %}
+					{% block flashes %}
+						{% if app.session.flashbag.peekAll|length > 0 %}
+							<div class="row">
+								<div class="col-sm-12">
+									{{ session_flash() }}
+								</div>
+							</div>
+						{% endif %}
+					{% endblock flashes %}
+                    <div class="row">
+					{% block body %}{% endblock %}
+				</div>
+			</div>
+		</div>
+		<div class="row row-footer">
+			<div class="col-xs-12 text-center text-muted"><small>&copy; 2016 Patrice Lachance</small></div>
+		</div>
+	</div>
+	{% block javascripts %}
+		{% javascripts
+			'components/jquery/jquery.js'
+			'components/bootstrap/dist/js/bootstrap.js'
+			'components/datatables/media/js/jquery.dataTables.js'
+			'components/datatables/media/js/dataTables.bootstrap.js'
+			'components/select2/dist/js/select2.js'
+			'components/select2/dist/js/i18n/fr.js'
+			'components/tinycolor/tinycolor.js'
+			'components/bootstrap-colorpickersliders/dist/bootstrap.colorpickersliders.js'
+			'js/global.js'
+			filter="?jsqueeze"
+			output='assets/js/global.js'
+		%}
+		<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+		{% if language != 'en' %}
+		<script>
+			$.fn.select2.defaults.set("language", "{{ language }}");
+			$.extend($.fn.dataTable.defaults, {
+				language: {
+					url: "{{ asset('js/datatables/' ~ language ~ '.json') }}"
+				}
+			});
+		</script>
+		{% endif %}
+	{% endblock %}
+</body>
+</html>

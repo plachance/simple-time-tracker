@@ -1,0 +1,37 @@
+imports:
+    - { resource: config.yml }
+
+doctrine:
+    orm:
+        metadata_cache_driver: apcu
+        result_cache_driver: apcu
+        query_cache_driver: apcu
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            excluded_404s:
+                - \.js\.map$
+            handler:      grouped
+        grouped:
+            type:    group
+            members: [rotating_file, deduplicated]
+        rotating_file:
+            type:  rotating_file
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        deduplicated:
+            type:    deduplication
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: '%logger_from_email%'
+            to_email:   '%logger_to_email%'
+            subject:    'Simple Time Tracker - Error'
+            level:      debug
+            formatter:  monolog.formatter.html
+            content_type: text/html
+        console:
+            type:  console

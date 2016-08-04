@@ -1,7 +1,0 @@
-<com:XPager
-	Mode="Numeric"
-	CssClass="text-center"
-	FirstPageText="<%[First]%>"
-	PrevPageText="<%[Previous]%>"
-	NextPageText="<%[Next]%>"
-	LastPageText="<%[Last]%>" />

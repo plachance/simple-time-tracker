@@ -1,118 +1,152 @@
 {
-	"name": "plachance/simple-time-tracker",
-	"description": "Minimalist time tracking software.",
+	"name": "patrice/simple-time-tracker",
+	"license": "proprietary",
 	"type": "project",
-	"homepage": "https://github.com/plachance/simple-time-tracker",
-	"license": "MIT",
-	"support": {
-		"issues": "https://github.com/plachance/simple-time-tracker/issues"
-	},
-	"authors":
-	[
-		{
-			"name": "Patrice Lachance",
-			"email": "patricelachance@gmail.com",
-			"homepage": "https://github.com/plachance",
-			"role": "Developer"
-		}
-	],
-	"repositories": [{
-			"type": "package",
-			"package":
-			{
-				"name": "istvan-ujjmeszaros/bootstrap-colorpickersliders",
-				"type": "component",
-				"version": "3.0.1",
-				"dist":
-				{
-					"type": "zip",
-					"url": "https://github.com/istvan-ujjmeszaros/bootstrap-colorpickersliders/archive/3.0.1.zip"
-				},
-				"require":
-				{
-					"robloach/component-installer": "*"
-				},
-				"extra":
-				{
-					"component":
-					{
-						"files":
-						[
-							"src/*.js",
-							"src/*.css"
-						]
-					}
-				}
-			}
+	"autoload": {
+		"psr-4": {
+			"": "src/"
 		},
-		{
-			"type": "package",
-			"package":
-			{
-				"name": "bgrins/tinycolor",
-				"type": "component",
-				"version": "1.1.2",
-				"dist":
-				{
-					"type": "zip",
-					"url": "https://github.com/bgrins/TinyColor/archive/1.1.2.zip"
-				},
-				"require":
-				{
-					"robloach/component-installer": "*"
-				},
-				"extra":
-				{
-					"component":
-					{
-						"files":
-						[
-							"tinycolor.js"
-						]
-					}
-				}
-			}
-		}],
-	"require":
-	{
-		"php": ">=5.3",
-		"ext-pdo": "*",
-		"pradosoft/prado": "~3.2.0",
-		"doctrine/orm": "~2.0",
-		"doctrine/dbal": "2.4.2",
-		"symfony/console": "~2.0",
-		"components/jquery": "~2.0",
-		"components/bootstrap": "~3.0",
-		"swiftmailer/swiftmailer": "~5.0",
-		"istvan-ujjmeszaros/bootstrap-colorpickersliders": "~3.0",
-		"bgrins/tinycolor": "~1.0"
-	},
-	"autoload":
-	{
-		"psr-4":
-		{
-			"SimpleTimeTracker\\": "protected/"
-		},
-		"files": ["vendor/pradosoft/prado/framework/prado.php"]
-	},
-	"scripts":
-	{
-		"post-create-project-cmd":
-		[
-			"mkdir -p assets protected/runtime",
-			"cp .htaccess.dist .htaccess",
-			"cp protected/application.default.php protected/application.php",
-			"php console.php orm:generate:proxies"
-		],
-		"post-install-cmd":
-		[
-			"mkdir -p assets protected/runtime",
-			"php console.php orm:generate:proxies"
-		],
-		"post-update-cmd":
-		[
-			"mkdir -p assets protected/runtime",
-			"php console.php orm:generate:proxies"
+		"classmap": [
+			"app/AppKernel.php",
+			"app/AppCache.php"
 		]
-	}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	},
+	"minimum-stability": "alpha",
+	"require": {
+		"php": "^7.0",
+		"ext-pgsql": "*",
+		"ext-intl": "*",
+		"ext-apcu": "*",
+		"symfony/symfony": "3.1.*",
+		"doctrine/orm": "^2.5",
+		"doctrine/doctrine-bundle": "^1.6",
+		"doctrine/doctrine-cache-bundle": "^1.2",
+		"symfony/swiftmailer-bundle": "^2.3",
+		"symfony/monolog-bundle": "^2.8",
+		"symfony/polyfill-apcu": "^1.0",
+		"sensio/distribution-bundle": "^5.0",
+		"sensio/framework-extra-bundle": "^3.0",
+		"incenteev/composer-parameter-handler": "^2.0",
+		"robloach/component-installer": "*",
+		"twbs/bootstrap": "^3.0",
+		"components/jquery": "^2.0",
+		"datatables/datatables": "^1.10",
+		"twig/extensions": "^1.3",
+		"select2/select2": "^4.0",
+		"select2/select2-bootstrap-theme": "^0.1.0",
+		"knplabs/knp-menu-bundle": "^2.1",
+		"symfony/assetic-bundle": "^2.8",
+		"leafo/scssphp": "^0.6.5",
+		"patchwork/jsqueeze": "^2.0",
+		"doctrine/doctrine-migrations-bundle": "^1.1",
+		"bgrins/tinycolor": "^1.4",
+		"istvan-ujjmeszaros/bootstrap-colorpickersliders": "^3.0"
+	},
+	"require-dev": {
+		"sensio/generator-bundle": "^3.0",
+		"symfony/phpunit-bridge": "^3.0",
+		"phpunit/phpunit": "^5.4",
+		"friendsofphp/php-cs-fixer": "^1.11",
+		"doctrine/doctrine-fixtures-bundle": "^2.3",
+		"liip/functional-test-bundle": "^1.6"
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+		],
+		"post-update-cmd": [
+			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+			"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+		]
+	},
+	"config": {
+		"component-dir": "web/components",
+		"component-baseurl": "/components"
+	},
+	"extra": {
+		"symfony-app-dir": "app",
+		"symfony-bin-dir": "bin",
+		"symfony-var-dir": "var",
+		"symfony-web-dir": "web",
+		"symfony-tests-dir": "tests",
+		"symfony-assets-install": "relative",
+		"incenteev-parameters": {
+			"file": "app/config/parameters.yml"
+		},
+		"component": {
+			"twbs/bootstrap": {
+				"files": [
+					"dist/js/*",
+					"dist/css/*",
+					"dist/fonts/*"
+				]
+			},
+			"datatables/datatables": {
+				"files": [
+					"media/js/*",
+					"media/css/*",
+					"media/images/*"
+				]
+			},
+			"select2/select2-bootstrap-theme": {
+				"files": [
+					"dist/*"
+				]
+			},
+			"bgrins/tinycolor": {
+				"files": [
+					"tinycolor.js",
+					"dist/*"
+				]
+			},
+			"istvan-ujjmeszaros/bootstrap-colorpickersliders": {
+				"files": [
+					"dist/*.js",
+					"dist/*.css"
+				]
+			}
+		}
+	},
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "select2/select2-bootstrap-theme",
+				"version": "0.1.0-beta.8",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/select2/select2-bootstrap-theme/archive/0.1.0-beta.8.zip"
+				}
+			}
+		},
+		{
+			"type": "package",
+			"package": {
+				"name": "bgrins/tinycolor",
+				"version": "1.4.1",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/bgrins/TinyColor/archive/1.4.1.zip"
+				}
+			}
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/istvan-ujjmeszaros/bootstrap-colorpickersliders"
+		}
+	]
 }

@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/..
+
+if [ $1 == "" ]; then
+	$1 = "dev"
+fi
+
+export SYMFONY_ENV=$1
+
+bin/symfony_requirements
+
+if [ $1 == "prod" ]; then
+	composer install --no-dev --no-progress --no-suggest --optimize-autoloader --no-interaction
+	./bin/console doctrine:ensure-production-settings
+else
+	composer install
+fi
