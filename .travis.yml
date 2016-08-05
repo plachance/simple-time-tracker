@@ -11,6 +11,10 @@ addons:
 
 before_install:
     - phpenv config-rm xdebug.ini
+    - php -i
+    - ls /home/travis/.phpenv/versions/7.0/etc/
+    - ls /home/travis/.phpenv/versions/7.0/etc/conf.d/
+    - pecl install apcu-5.1.3
 
 script:
     - ./bin/test
