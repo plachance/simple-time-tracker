@@ -11,7 +11,7 @@ Requirements
 * PHP 7
 * ext-intl
 * ext-apcu
-* PostgreSQL 9.1+
+* PostgreSQL 9.2+
 * Composer
 
 Installation
