@@ -111,7 +111,7 @@ class ProjectRepository extends EntityRepository
 					GROUP BY p.description
 					ORDER BY p.description
 				)
-				SELECT * FROM time
+				SELECT * FROM project_time
 				UNION ALL
 				SELECT null, SUM(t.time)
 				FROM project_time t';
