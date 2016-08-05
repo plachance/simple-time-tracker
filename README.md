@@ -1,6 +1,8 @@
 README
 ======
 
+[![Build Status](https://travis-ci.org/plachance/simple-time-tracker.svg?branch=master)](https://travis-ci.org/plachance/simple-time-tracker)
+
 Minimalist time tracking software.
 
 Requirements

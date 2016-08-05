@@ -1,0 +1,17 @@
+language: php
+php:
+    - '7.0'
+    - nightly
+
+services:
+    - postgresql
+
+addons:
+    postgresql: "9.5"
+
+before_install:
+    - pecl install xml
+    - pecl install intl
+
+script:
+    - ./bin/test
