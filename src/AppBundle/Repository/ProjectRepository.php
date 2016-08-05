@@ -38,7 +38,7 @@ class ProjectRepository extends EntityRepository
 		$version = $this->getServerVersion();
 		if(version_compare($version, '9.5', '>='))
 		{
-			$sql = 'WITH time AS (
+			$sql = 'WITH project_time AS (
 					SELECT t.user_id,
 						SUM(EXTRACT(epoch FROM t.date_time_end - t.date_time_begin)/3600) AS time
 					FROM task t
@@ -47,13 +47,13 @@ class ProjectRepository extends EntityRepository
 					GROUP BY ROLLUP (t.user_id)
 				)
 				SELECT u.username, t.time
-				FROM time t
+				FROM project_time t
 				LEFT JOIN "user" u USING(user_id)
 				ORDER BY u.username;';
 		}
 		else
 		{
-			$sql = 'WITH time AS (
+			$sql = 'WITH project_time AS (
 					SELECT t.user_id,
 						SUM(EXTRACT(epoch FROM t.date_time_end - t.date_time_begin)/3600) AS time
 					FROM task t
@@ -62,12 +62,12 @@ class ProjectRepository extends EntityRepository
 					GROUP BY t.user_id
 				)
 				(SELECT u.username, t.time
-				FROM time t
+				FROM project_time t
 				LEFT JOIN "user" u USING(user_id)
 				ORDER BY u.username)
 				UNION ALL
 				(SELECT null, SUM(t.time)
-				FROM time t);';
+				FROM project_time t);';
 		}
 
 		return $this->getEntityManager()
@@ -102,7 +102,7 @@ class ProjectRepository extends EntityRepository
 		}
 		else
 		{
-			$sql = 'WITH time AS (
+			$sql = 'WITH project_time AS (
 					SELECT p.description,
 						SUM(EXTRACT(epoch FROM t.date_time_end - t.date_time_begin)/3600) AS time
 					FROM task t
@@ -114,7 +114,7 @@ class ProjectRepository extends EntityRepository
 				SELECT * FROM time
 				UNION ALL
 				SELECT null, SUM(t.time)
-				FROM time t';
+				FROM project_time t';
 		}
 
 		return $this->getEntityManager()
