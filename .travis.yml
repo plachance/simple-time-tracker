@@ -7,12 +7,10 @@ services:
     - postgresql
 
 addons:
-    postgresql: "9.5"
+    postgresql: "9.4"
 
 before_install:
     - phpenv config-rm xdebug.ini
-    - pecl install domxml
-    - pecl install intl
 
 script:
     - ./bin/test
