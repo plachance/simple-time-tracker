@@ -9,6 +9,7 @@ Requirements
 * PHP 7
 * ext-intl
 * ext-apcu
+* ext-pgsql
 * PostgreSQL 9.5+
 * Composer
 
@@ -27,14 +28,16 @@ Update
 Usage
 -----
 
-* Create users with ```./bin/console :user:create -e prod```
-* Change existing user's password with ```./bin/console :user:change-password -e prod```
+* Create users with ```./bin/console user:create -e prod```
+* Change existing user's password with ```./bin/console user:change-password -e prod```
 
 Contributing
 ------------
 
 Run `./bin/setup` to set up the project in an initial state or to reset the the project back to its initial state.
+
 Run `./bin/update` after you run `git pull` to ensure the project is up to update.
+
 Make sure there's no known security vulnerabilities, the code respect standards and all tests pass by running `./bin/test`.
 
 License
