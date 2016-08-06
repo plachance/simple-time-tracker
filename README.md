@@ -1,6 +1,8 @@
 README
 ======
 
+[![Build Status](https://travis-ci.org/plachance/simple-time-tracker.svg?branch=master)](https://travis-ci.org/plachance/simple-time-tracker)
+
 Minimalist time tracking software.
 
 Requirements
@@ -9,7 +11,7 @@ Requirements
 * PHP 7
 * ext-intl
 * ext-apcu
-* PostgreSQL 9.5+
+* PostgreSQL 9.2+
 * Composer
 
 Installation
