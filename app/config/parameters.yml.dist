@@ -5,9 +5,9 @@ parameters:
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     simple_time_tracker
-    database_user:     root
+    database_user:     postgres
     database_password: ~
-    database_server_version: 9.5 # Required to avoid this bug https://github.com/doctrine/DoctrineBundle/issues/351
+    database_server_version: 9.2 # Required to avoid this bug https://github.com/doctrine/DoctrineBundle/issues/351
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 

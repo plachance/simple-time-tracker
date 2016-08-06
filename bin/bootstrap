@@ -9,11 +9,15 @@ fi
 
 export SYMFONY_ENV=$1
 
-bin/symfony_requirements
+mkdir -p var
 
-if [ $1 == "prod" ]; then
+if [ "$1" == "prod" ]; then
 	composer install --no-dev --no-progress --no-suggest --optimize-autoloader --no-interaction
 	./bin/console doctrine:ensure-production-settings
+elif [ "$1" == "test" ]; then
+	composer install --no-progress --no-suggest --no-interaction
 else
 	composer install
 fi
+
+bin/symfony_requirements
