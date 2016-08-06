@@ -9,6 +9,10 @@ services:
 addons:
     postgresql: "9.2"
 
+cache:
+    directories:
+        - $HOME/.composer/cache
+
 before_install:
     - phpenv config-rm xdebug.ini
     - echo "no" | pecl install apcu-5.1.3
