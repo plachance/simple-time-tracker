@@ -15,38 +15,46 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
  *
  * @author Patrice Lachance <patricelachance@gmail.com>
  */
-class FunctionalTestsFixture extends AbstractFixture implements ContainerAwareInterface
+class FunctionalTestsFixture extends AbstractFixture
+	implements ContainerAwareInterface
 {
 	use \Symfony\Component\DependencyInjection\ContainerAwareTrait;
-
 	public function load(ObjectManager $manager)
 	{
-		$user = new User();
-        $user->setUsername('admin');
-		$user->setEmail('test@test.com');
-		$user->setRoles(['ROLE_ADMIN']);
 		$encoder = $this->container->get('security.password_encoder');
-        $password = $encoder->encodePassword($user, 'test');
-        $user->setPassword($password);
-        $manager->persist($user);
+
+		$userAdmin = new User();
+		$userAdmin->setUsername('admin');
+		$userAdmin->setEmail('test@test.com');
+		$userAdmin->setRoles(['ROLE_ADMIN']);
+		$userAdmin->setPassword($encoder->encodePassword($userAdmin, 'test'));
+		$manager->persist($userAdmin);
+		$this->addReference('admin-user', $userAdmin);
+
+		$userWithoutTask = new User();
+		$userWithoutTask->setUsername('Withouttask');
+		$userWithoutTask->setEmail('Withouttask@test.com');
+		$userWithoutTask->setRoles(['ROLE_USER']);
+		$userWithoutTask->setPassword($encoder->encodePassword($userWithoutTask,
+				'test'));
+		$manager->persist($userWithoutTask);
+		$this->addReference('without-task-user', $userWithoutTask);
 
 		$project = new Project();
 		$project->setDescription('Unit testing');
 		$project->setNo(12345);
-		$project->setUser($user);
+		$project->setUser($userAdmin);
 		$manager->persist($project);
+		$this->addReference('project', $project);
 
 		$task = new Task();
 		$task->setProject($project);
-		$task->setUser($user);
+		$task->setUser($userAdmin);
 		$task->setDateTimeBegin(new DateTime('2016-08-05'));
 		$manager->persist($task);
-
-        $manager->flush();
-
-		$this->addReference('admin-user', $user);
-		$this->addReference('project', $project);
 		$this->addReference('task', $task);
+
+		$manager->flush();
 	}
 
 }

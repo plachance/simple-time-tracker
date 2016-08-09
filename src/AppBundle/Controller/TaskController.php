@@ -232,14 +232,14 @@ class TaskController extends AppController
 		$pinnedProjects = $projectRepo->findBy(['user' => $this->getUser(), 'pinned' => true],
 			['no' => 'asc', 'description' => 'asc']);
 
-		$stopForm = $this->createStopForm($task);
-		$restartForm = $this->createRestartForm($task);
+		$stopForm = $task ? $this->createStopForm($task) : null;
+		$restartForm = $task ? $this->createRestartForm($task) : null;
 
 		return $this->render('task/current.html.twig',
 				[
 				'task' => $task,
-				'stop_form' => $stopForm->createView(),
-				'restart_form' => $restartForm->createView(),
+				'stop_form' => $stopForm ? $stopForm->createView() : null,
+				'restart_form' => $restartForm ? $restartForm->createView() : null,
 				'pinned_projects' => $pinnedProjects,
 		]);
 	}
