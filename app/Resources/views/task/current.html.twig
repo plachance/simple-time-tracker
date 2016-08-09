@@ -30,14 +30,14 @@
 						<div class="col-sm-offset-4 col-sm-8">
 							{% if task is defined and task is not null %}
 								{% if task.getDateTimeEnd() is null %}
-									{{ form_start(stop_form) }}
+									{{ form_start(stop_form, {attr: {style: 'display:inline-block'}}) }}
 									{{ form_widget(stop_form) }}
 									<button type="submit" class="btn btn-primary">
 										<span class="glyphicon glyphicon-stop" aria-hidden="true"></span> {% trans %}Stop{% endtrans %}
 									</button>
 									{{ form_end(stop_form) }}
 								{% else %}
-									{{ form_start(restart_form, {attr: {style: 'display:inline'}}) }}
+									{{ form_start(restart_form, {attr: {style: 'display:inline-block'}}) }}
 									{{ form_widget(restart_form) }}
 									<button type="submit" class="btn btn-primary">
 										<span class="glyphicon glyphicon-play" aria-hidden="true"></span> {% trans %}Restart{% endtrans %}
@@ -45,11 +45,9 @@
 									{{ form_end(restart_form) }}
 								{% endif %}
 							{% endif %}
-							{% if task is not defined or task is null or task.getDateTimeEnd() is not null %}
-								<a href="{{ path('task_new', {'r': app.request.requestUri}) }}" class="btn btn-default">
-									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}Start a new task{% endtrans %}
-								</a>
-							{% endif %}
+							<a href="{{ path('task_new', {'r': app.request.requestUri}) }}" class="btn btn-default">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}Start a new task{% endtrans %}
+							</a>
 						</div>
 					</div>
 				</div>
