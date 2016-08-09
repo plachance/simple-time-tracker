@@ -75,9 +75,23 @@ class TaskController extends AppController
 
 		if($form->isSubmitted() && $form->isValid())
 		{
+			$repo = $em->getRepository('AppBundle:Task');
+			/* @var $repo TaskRepository */
+			$currentTask = $repo->getCurrentTask($this->getUser());
+			$currentTaskStopped = false;
+			if($currentTask->getDateTimeEnd() === null)
+			{
+				$currentTask->stop();
+				$currentTaskStopped = true;
+			}
+
 			$em->persist($task);
 			$em->flush();
 
+			if($currentTaskStopped)
+			{
+				$this->addFlash('success', $this->trans('Current task stopped.'));
+			}
 			$this->addFlash('success', $this->trans('Task created.'));
 
 			return $this->redirectReturnUrlOrRoute($request, 'task_index');
