@@ -30,8 +30,8 @@ Update
 Usage
 -----
 
-* Create users with ```./bin/console user:create -e prod```
-* Change existing user's password with ```./bin/console user:change-password -e prod```
+* Create users with ```./bin/console user:create -e prod <username>```
+* Change existing user's password with ```./bin/console user:change-password -e prod <username>```
 
 Contributing
 ------------
