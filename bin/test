@@ -16,4 +16,8 @@ export SYMFONY_ENV=$ENV
 
 ./vendor/bin/php-cs-fixer fix --dry-run
 
+./bin/console lint:twig app/Resources/views/
+
+./bin/console lint:yaml app/config/
+
 ./vendor/bin/phpunit
