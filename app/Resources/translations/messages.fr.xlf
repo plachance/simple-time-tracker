@@ -281,13 +281,25 @@
         <source>Change password</source>
         <target>Changer de mot de passe</target>
       </trans-unit>
-	  <trans-unit id="Workday length (in hours):" resname="Workday length (in hours):">
+      <trans-unit id="b1ea8f0e9ee9afe0ccb3780567458219" resname="Workday length (in hours):">
         <source>Workday length (in hours):</source>
         <target>Durée de la journée de travail (en heures) :</target>
       </trans-unit>
-	  <trans-unit id="Repeat Password:" resname="Repeat Password:">
+      <trans-unit id="727e9d3e8e032f3ed2d10eaaaf142a75" resname="Repeat Password:">
         <source>Repeat Password:</source>
         <target>Confirmation :</target>
+      </trans-unit>
+      <trans-unit id="3245fccd02600adc86e470b097ee4bb8" resname="Current task stopped.">
+        <source>Current task stopped.</source>
+        <target>Tâche courante arrêtée.</target>
+      </trans-unit>
+      <trans-unit id="8c122a1c727515d78ec0c522fe0de07b" resname="Unpin this project">
+        <source>Unpin this project</source>
+        <target>Détacher de projet</target>
+      </trans-unit>
+      <trans-unit id="993213b834f6f90d775ac1b1a9277b45" resname="Pin this project">
+        <source>Pin this project</source>
+        <target>Épingler ce projet</target>
       </trans-unit>
     </body>
   </file>

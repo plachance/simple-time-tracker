@@ -203,4 +203,28 @@ class ProjetController extends AppController
 		]);
 	}
 
+	/**
+	 * Pin/Unpin the specified project.
+	 * 
+	 * @Route("/{id}/pin/{pinned}", name="project_pin", requirements={"id": "\d+", "pinned": "\d"})
+	 * @Method("POST")
+	 * @Security("is_granted('ROLE_USER')")
+	 */
+	public function pinAction(Request $request, Project $project, int $pinned)
+	{
+		if($project->getUser()->getId() !== $this->getUser()->getId())
+		{
+			throw $this->createAccessDeniedException();
+		}
+
+		$em = $this->getDoctrine()->getManager();
+		$em->refresh($project->getUser()); //It tries to save the user with an empty password otherwise.
+
+		$project->setPinned((bool) $pinned);
+
+		$em->flush();
+
+		return $this->redirectToRoute('task_current');
+	}
+
 }

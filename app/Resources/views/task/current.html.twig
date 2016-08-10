@@ -10,7 +10,15 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label">{% trans %}Project:{% endtrans %}</label>
 							<div class="col-sm-8">
-								<p class="form-control-static">{{ task.project }}</p>
+								<p class="form-control-static" style="display:inline-block">{{ task.project }}</p>
+								{% if task is defined and task is not null %}
+									{{ form_start(pin_form, {attr: {style: 'display:inline-block'}}) }}
+									{{ form_widget(pin_form) }}
+									<button type="submit" class="btn btn-default{{ task.project.pinned ? ' active' }}" title="{{ task.project.pinned ? 'Unpin this project'|trans : 'Pin this project'|trans }}">
+										<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+									</button>
+									{{ form_end(pin_form) }}
+								{% endif %}
 							</div>
 						</div>
 						<div class="form-group">

@@ -246,12 +246,14 @@ class TaskController extends AppController
 		$pinnedProjects = $projectRepo->findBy(['user' => $this->getUser(), 'pinned' => true],
 			['no' => 'asc', 'description' => 'asc']);
 
+		$pinForm = $task ? $this->createPinForm($task->getProject()) : null;
 		$stopForm = $task ? $this->createStopForm($task) : null;
 		$restartForm = $task ? $this->createRestartForm($task) : null;
 
 		return $this->render('task/current.html.twig',
 				[
 				'task' => $task,
+				'pin_form' => $pinForm ? $pinForm->createView() : null,
 				'stop_form' => $stopForm ? $stopForm->createView() : null,
 				'restart_form' => $restartForm ? $restartForm->createView() : null,
 				'pinned_projects' => $pinnedProjects,
@@ -284,6 +286,24 @@ class TaskController extends AppController
 		}
 
 		return $this->redirectToRoute('task_current');
+	}
+
+	/**
+	 * Creates a form to stop a Task entity.
+	 * 
+	 * @param Project $project The Task entity
+	 * @return Form The form
+	 */
+	private function createPinForm(Project $project)
+	{
+		return $this->createFormBuilder()
+				->setAction($this->generateUrl('project_pin', [
+					'id' => $project->getId(),
+					'pinned' => (int) !$project->getPinned(),
+					]))
+				->setMethod('POST')
+				->getForm()
+		;
 	}
 
 	/**

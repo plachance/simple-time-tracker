@@ -157,7 +157,7 @@ class Project
 	/**
 	 * Set pinned.
 	 *
-	 * @param string $pinned
+	 * @param bool $pinned
 	 *
 	 * @return Project
 	 */
