@@ -13,7 +13,7 @@ monolog:
             type:         fingers_crossed
             action_level: error
             excluded_404s:
-                - \.js\.map$
+                - \.map$
             handler:      grouped
         grouped:
             type:    group
