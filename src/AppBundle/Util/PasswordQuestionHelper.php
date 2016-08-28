@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Util;
 
@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Validator\RecursiveValidator;
 
 /**
  * Trait PasswordQuestionHelper.
- * 
+ *
  * Offer features to ask a password with or without confirmation in a console Command.
  *
  * @author Patrice Lachance <patricelachance@gmail.com>

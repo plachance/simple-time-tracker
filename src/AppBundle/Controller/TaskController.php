@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Controller;
 
@@ -106,7 +106,7 @@ class TaskController extends AppController
 
 	/**
 	 * Start a new task with the specified project and return to the current task page.
-	 * 
+	 *
 	 * @Route("/quickstart/{id}", name="task_quickstart", requirements={"id": "\d+"})
 	 * @Method("GET")
 	 * @Security("is_granted('ROLE_USER')")
@@ -229,7 +229,7 @@ class TaskController extends AppController
 
 	/**
 	 * Show the current action of the user.
-	 * 
+	 *
 	 * @Route("/current", name="task_current")
 	 * @Method("GET")
 	 * @Security("is_granted('ROLE_USER')")
@@ -262,7 +262,7 @@ class TaskController extends AppController
 
 	/**
 	 * Stop the specified task.
-	 * 
+	 *
 	 * @Route("/{id}/stop", name="task_stop", requirements={"id": "\d+"})
 	 * @Method("POST")
 	 * @Security("is_granted('ROLE_USER')")
@@ -290,7 +290,7 @@ class TaskController extends AppController
 
 	/**
 	 * Creates a form to stop a Task entity.
-	 * 
+	 *
 	 * @param Project $project The Task entity
 	 * @return Form The form
 	 */
@@ -308,7 +308,7 @@ class TaskController extends AppController
 
 	/**
 	 * Creates a form to stop a Task entity.
-	 * 
+	 *
 	 * @param Task $task The Task entity
 	 * @return Form The form
 	 */
@@ -323,7 +323,7 @@ class TaskController extends AppController
 
 	/**
 	 * Create a new task from the specified task.
-	 * 
+	 *
 	 * @Route("/{id}/restart", name="task_restart", requirements={"id": "\d+"})
 	 * @Method("POST")
 	 * @Security("is_granted('ROLE_USER')")
@@ -352,7 +352,7 @@ class TaskController extends AppController
 
 	/**
 	 * Creates a form to restart a Task entity.
-	 * 
+	 *
 	 * @param Task $task The Task entity
 	 * @return Form The form
 	 */
@@ -367,7 +367,7 @@ class TaskController extends AppController
 
 	/**
 	 * Show the summary of all user's tasks.
-	 * 
+	 *
 	 * @Route("/summary", name="task_summary")
 	 * @Method("GET")
 	 * @Security("is_granted('ROLE_USER')")
@@ -388,7 +388,7 @@ class TaskController extends AppController
 
 	/**
 	 * Show the user's timesheet.
-	 * 
+	 *
 	 * @Route("/timesheet/{date}", name="task_timesheet", requirements={"date": "\d{4}-\d{2}-\d{2}"}, defaults={"date": "now"})
 	 * @Method("GET")
 	 * @Security("is_granted('ROLE_USER')")

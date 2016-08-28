@@ -25,7 +25,7 @@ class ProfileController extends AppController
 {
 	/**
 	 * Show the profile settings forms.
-	 * 
+	 *
 	 * @Route("", name="profile_index")
 	 * @Method({"GET", "POST"})
 	 * @Security("is_granted(['ROLE_USER', 'IS_AUTHENTICATED_FULLY'])")

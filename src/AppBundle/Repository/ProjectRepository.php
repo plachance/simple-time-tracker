@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Repository;
 
@@ -15,7 +15,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class ProjectRepository extends EntityRepository
 {
 	/**
-	 * @return string Database server version.
+	 * @return string Database server version
 	 */
 	protected function getServerVersion()
 	{

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Repository;
 
@@ -45,7 +45,7 @@ class TaskRepository extends EntityRepository
 	 * Get current task from specified user.
 	 *
 	 * @param User $user
-	 * @return null|Task Current task from specified user.
+	 * @return null|Task Current task from specified user
 	 */
 	public function getCurrentTask(User $user)
 	{
@@ -63,7 +63,7 @@ class TaskRepository extends EntityRepository
 	 *
 	 * @param User $user
 	 * @param int[] $years
-	 * @return mixed[int][string] Summary of all work for the specified user.
+	 * @return mixed[int][string] Summary of all work for the specified user
 	 */
 	public function getSummary(User $user, array $years = null)
 	{
@@ -112,7 +112,7 @@ class TaskRepository extends EntityRepository
 
 	/**
 	 * @param User $user
-	 * @return int[] Work years for the specified user.
+	 * @return int[] Work years for the specified user
 	 */
 	public function getYears(User $user)
 	{
@@ -131,8 +131,8 @@ class TaskRepository extends EntityRepository
 	 * Get a table containing time spent for each tasks for the specified user and week.
 	 *
 	 * @param User $user
-	 * @param DateTime $dateBegin First timesheet date.
-	 * @return mixed[int][string] Timesheet for the specified week.
+	 * @param DateTime $dateBegin First timesheet date
+	 * @return mixed[int][string] Timesheet for the specified week
 	 */
 	public function getTimeSheet(User $user, DateTime $dateBegin)
 	{
@@ -200,14 +200,14 @@ class TaskRepository extends EntityRepository
 
 	/**
 	 * Get the arrival and departure times for the specified user.
-	 * 
+	 *
 	 * Gaps between tasks of less than 15 minutes are ignored.
 	 *
 	 * @param User $user
 	 * @param DateTime $dateBegin First timesheet date
-	 * @param int $days Number of days to include in the timesheet.
-	 * @throws InvalidArgumentException if $days is less than 1.
-	 * @return mixed[int][string] Time periods for the specified week.
+	 * @param int $days Number of days to include in the timesheet
+	 * @throws InvalidArgumentException if $days is less than 1
+	 * @return mixed[int][string] Time periods for the specified week
 	 */
 	public function getTimePeriods(User $user, DateTime $dateBegin, int $days = 7)
 	{
@@ -272,15 +272,15 @@ class TaskRepository extends EntityRepository
 
 	/**
 	 * Calculate the departure time of the user based on the time periods of the specified day.
-	 * 
-	 * If the day length is over, it returns the last arrival or departure time 
-	 * of the day. Otherwise, it returns the remaining time added to : the last 
+	 *
+	 * If the day length is over, it returns the last arrival or departure time
+	 * of the day. Otherwise, it returns the remaining time added to : the last
 	 * arrival time if the task ongoing or now if not.
 	 *
 	 * @param User $user
 	 * @param DateTime $date
-	 * @param float $dayLength Work day length, in hours. Default's to the user's preference if not set.
-	 * @throws InvalidArgumentException if $dayLength is less or equal to zero.
+	 * @param float $dayLength Work day length, in hours. Default's to the user's preference if not set
+	 * @throws InvalidArgumentException if $dayLength is less or equal to zero
 	 * @return DateTime
 	 */
 	public function getDepartureTime(User $user, DateTime $date = null,

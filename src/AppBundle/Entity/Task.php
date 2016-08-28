@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
@@ -165,7 +165,7 @@ class Task
 	/**
 	 * Get user.
 	 *
-	 * @return User 
+	 * @return User
 	 */
 	public function getUser()
 	{

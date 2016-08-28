@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Controller;
 
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class AppController.
- * 
+ *
  * It provides methods to common features needed in application's controllers.
  *
  * @author Patrice Lachance <patricelachance@gmail.com>
@@ -42,9 +42,9 @@ class AppController extends Controller
 	/**
 	 * Translate the string using the translator service.
 	 *
-	 * @param string $message The string to translate.
-	 * @throws LogicException if the translator service is disabled.
-	 * @return string The translated string.
+	 * @param string $message The string to translate
+	 * @throws LogicException if the translator service is disabled
+	 * @return string The translated string
 	 */
 	protected function trans(string $message)
 	{

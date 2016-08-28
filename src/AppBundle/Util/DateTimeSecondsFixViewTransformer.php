@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Util;
 
@@ -8,7 +8,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 /**
  * Class DateTimeSecondsFixViewTransformer.
- * 
+ *
  * Add missing seconds when a datetime-local HTML5 input is submitted.
  *
  * @author Patrice Lachance <patricelachance@gmail.com>

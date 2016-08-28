@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Menu;
 
@@ -72,11 +72,9 @@ class Builder implements ContainerAwareInterface
 	/**
 	 * Translate the string using the translator service.
 	 *
-	 * @param string $message The string to translate.
-	 *
-	 * @throws LogicException if the translator service is disabled.
-	 *
-	 * @return string The translated string.
+	 * @param string $message The string to translate
+	 * @throws LogicException if the translator service is disabled
+	 * @return string The translated string
 	 */
 	protected function trans(string $message)
 	{

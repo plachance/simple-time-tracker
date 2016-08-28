@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Util;
 
 /**
  * Class PropertyValue.
- * 
+ *
  * Utility functions to deals with inputs.
  *
  * @author Patrice Lachance <patricelachance@gmail.com>

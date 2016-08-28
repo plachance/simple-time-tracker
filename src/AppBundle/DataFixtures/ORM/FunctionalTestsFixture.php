@@ -15,8 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
  *
  * @author Patrice Lachance <patricelachance@gmail.com>
  */
-class FunctionalTestsFixture extends AbstractFixture
-	implements ContainerAwareInterface
+class FunctionalTestsFixture extends AbstractFixture implements ContainerAwareInterface
 {
 	use \Symfony\Component\DependencyInjection\ContainerAwareTrait;
 	public function load(ObjectManager $manager)

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Controller;
 
@@ -205,7 +205,7 @@ class ProjetController extends AppController
 
 	/**
 	 * Pin/Unpin the specified project.
-	 * 
+	 *
 	 * @Route("/{id}/pin/{pinned}", name="project_pin", requirements={"id": "\d+", "pinned": "\d"})
 	 * @Method("POST")
 	 * @Security("is_granted('ROLE_USER')")

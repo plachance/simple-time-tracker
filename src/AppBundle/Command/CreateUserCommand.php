@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Command;
 
@@ -86,7 +86,7 @@ class CreateUserCommand extends ContainerAwareCommand
 	 * @param string $password
 	 * @param array $roles
 	 *
-	 * @throws RuntimeException if there were validation errors.
+	 * @throws RuntimeException if there were validation errors
 	 */
 	protected function createUser(string $username, string $email,
 		string $password, array $roles)

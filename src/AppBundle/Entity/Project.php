@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
@@ -58,7 +58,7 @@ class Project
 
 	/**
 	 * @var bool
-	 * 
+	 *
 	 * @Column(type="boolean", nullable=false)
 	 * @Assert\NotNull()
 	 */
@@ -195,7 +195,7 @@ class Project
 	/**
 	 * Get user.
 	 *
-	 * @return User 
+	 * @return User
 	 */
 	public function getUser()
 	{
