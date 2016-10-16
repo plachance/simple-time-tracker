@@ -79,7 +79,7 @@ class TaskController extends AppController
 			/* @var $repo TaskRepository */
 			$currentTask = $repo->getCurrentTask($this->getUser());
 			$currentTaskStopped = false;
-			if($currentTask->getDateTimeEnd() === null)
+			if($currentTask !== null && $currentTask->getDateTimeEnd() === null)
 			{
 				$currentTask->stop();
 				$currentTaskStopped = true;
@@ -128,7 +128,7 @@ class TaskController extends AppController
 		$repo = $em->getRepository('AppBundle:Task');
 		/* @var $repo TaskRepository */
 		$currentTask = $repo->getCurrentTask($this->getUser());
-		if($currentTask->getDateTimeEnd() === null)
+		if($currentTask !== null && $currentTask->getDateTimeEnd() === null)
 		{
 			$currentTask->setDateTimeEnd(clone $now);
 		}
