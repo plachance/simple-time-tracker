@@ -1,4 +1,5 @@
 /app/config/parameters.yml
+/app/config/vhost.conf
 /build/
 /nbproject/private/
 /phpunit.xml
