@@ -8,6 +8,7 @@ use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Translation\Translator;
 
 /**
  * Class AppController.
@@ -43,17 +44,23 @@ class AppController extends Controller
 	 * Translate the string using the translator service.
 	 *
 	 * @param string $message The string to translate
+	 * @param array $parameters An array of parameters for the message
+	 * @param string|null $domain The domain for the message or null to use the default
+	 * @param string|null $locale The locale or null to use the default
 	 * @throws LogicException if the translator service is disabled
 	 * @return string The translated string
 	 */
-	protected function trans(string $message)
+	protected function trans(string $message, array $parameters = [],
+		$domain = null, $locale = null)
 	{
 		if(!$this->container->has('translator'))
 		{
 			throw new LogicException('You can not use the trans method if the translator service is disabled.');
 		}
 
-		return $this->container->get('translator')->trans($message);
+		$translator = $this->container->get('translator');
+		/* @var $translator Translator */
+		return $translator->trans($message, $parameters, $domain, $locale);
 	}
 
 }
