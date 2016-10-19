@@ -301,6 +301,10 @@
         <source>Pin this project</source>
         <target>Épingler ce projet</target>
       </trans-unit>
+	  <trans-unit id="e940de5fda641ec8b7b48f3003d525e7" resname="Task already stopped at %dateTimeEnd%.">
+        <source>Task already stopped at %dateTimeEnd%.</source>
+        <target>Cette tâche a déjà été arrêtée le %dateTimeEnd%.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

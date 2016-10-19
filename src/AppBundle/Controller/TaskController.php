@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Exception\TaskAlreadyStoppedException;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\Task;
 use AppBundle\Form\TaskType;
 use AppBundle\Repository\TaskRepository;
+use AppBundle\Util\Intl;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -281,8 +283,19 @@ class TaskController extends AppController
 		{
 			$em = $this->getDoctrine()->getManager();
 			$em->refresh($task->getUser()); //It tries to save the user with an empty password otherwise.
-			$task->stop();
-			$em->flush();
+			try
+			{
+				$task->stop();
+				$em->flush();
+			}
+			catch(TaskAlreadyStoppedException $ex)
+			{
+				$intl = $this->get('app.intl');
+				/* @var $intl Intl */
+				$this->addFlash('info',
+					$this->trans('Task already stopped at %dateTimeEnd%.',
+						['%dateTimeEnd%' => $intl->localizeDate($task->getDateTimeEnd())]));
+			}
 		}
 
 		return $this->redirectToRoute('task_current');
@@ -298,9 +311,9 @@ class TaskController extends AppController
 	{
 		return $this->createFormBuilder()
 				->setAction($this->generateUrl('project_pin', [
-					'id' => $project->getId(),
-					'pinned' => (int) !$project->getPinned(),
-					]))
+						'id' => $project->getId(),
+						'pinned' => (int) !$project->getPinned(),
+				]))
 				->setMethod('POST')
 				->getForm()
 		;
