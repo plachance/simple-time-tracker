@@ -25,3 +25,7 @@ services:
         arguments: ['@translator']
         tags:
             - { name: form.type }
+
+    app.intl:
+        class: AppBundle\Util\Intl
+        arguments: ['@translator']
