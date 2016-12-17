@@ -22,10 +22,12 @@
 		"ext-pgsql": "*",
 		"ext-intl": "*",
 		"ext-apcu": "*",
-		"symfony/symfony": "3.1.*",
+		"symfony/symfony": "3.2.*",
 		"doctrine/orm": "^2.5",
 		"doctrine/doctrine-bundle": "^1.6",
 		"doctrine/doctrine-cache-bundle": "^1.2",
+		"doctrine/annotations": "^1.3",
+		"doctrine/doctrine-migrations-bundle": "^1.1",
 		"symfony/swiftmailer-bundle": "^2.3",
 		"symfony/monolog-bundle": "^2.8",
 		"symfony/polyfill-apcu": "^1.0",
@@ -43,11 +45,11 @@
 		"symfony/assetic-bundle": "^2.8",
 		"leafo/scssphp": "^0.6.5",
 		"patchwork/jsqueeze": "^2.0",
-		"doctrine/doctrine-migrations-bundle": "^1.1",
 		"bgrins/tinycolor": "^1.4",
 		"istvan-ujjmeszaros/bootstrap-colorpickersliders": "^3.0"
 	},
 	"require-dev": {
+		"ext-mbstring": "*",
 		"sensio/generator-bundle": "^3.0",
 		"symfony/phpunit-bridge": "^3.0",
 		"phpunit/phpunit": "^5.4",
@@ -126,10 +128,10 @@
 			"type": "package",
 			"package": {
 				"name": "select2/select2-bootstrap-theme",
-				"version": "0.1.0-beta.8",
+				"version": "0.1.0-beta.9",
 				"dist": {
 					"type": "zip",
-					"url": "https://github.com/select2/select2-bootstrap-theme/archive/0.1.0-beta.8.zip"
+					"url": "https://github.com/select2/select2-bootstrap-theme/archive/0.1.0-beta.9.zip"
 				}
 			}
 		},
