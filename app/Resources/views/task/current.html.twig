@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% from 'task/task.html.twig' import render_tasks_list %}
+{% from 'task/task.html.twig' import render_tasks_list_js %}
 {% set title = 'Current task'|trans %}
 
 {% block body %}
@@ -64,7 +64,9 @@
 					</div>
 				</div>
 				<h2 class="text-center">{% trans %}Latest tasks{% endtrans %}</h2>
-				{{ render_tasks_list(latest_tasks, false, false, false) }}
+				<div class="table-responsive">
+					<table id="tasks" class="table table-striped table-hover" data-order='[[2, "desc"]]'></table>
+				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="panel panel-default">
@@ -87,4 +89,14 @@
 			</div>
 		</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function()
+		{
+			{{ render_tasks_list_js('#tasks', latest_tasks, false, false, false) }}
+		});
+	</script>
 {% endblock %}

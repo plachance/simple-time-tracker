@@ -18,6 +18,7 @@ class AppKernel extends Kernel
 			new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 			new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 			new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+			new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 			new AppBundle\AppBundle(),
 		];
 

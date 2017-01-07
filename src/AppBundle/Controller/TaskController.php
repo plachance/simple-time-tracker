@@ -150,7 +150,7 @@ class TaskController extends AppController
 	/**
 	 * Displays a form to edit an existing Task entity.
 	 *
-	 * @Route("/{id}/edit", name="task_edit", requirements={"id": "\d+"})
+	 * @Route("/{id}/edit", name="task_edit", requirements={"id": "\d+"}, options={"expose"=true})
 	 * @Method({"GET", "POST"})
 	 * @Security("is_granted('ROLE_USER')")
 	 */
@@ -185,7 +185,7 @@ class TaskController extends AppController
 	/**
 	 * Deletes a Task entity.
 	 *
-	 * @Route("/{id}/delete", name="task_delete", requirements={"id": "\d+"})
+	 * @Route("/{id}/delete", name="task_delete", requirements={"id": "\d+"}, options={"expose"=true})
 	 * @Method({"GET", "DELETE"})
 	 * @Security("is_granted('ROLE_USER')")
 	 */

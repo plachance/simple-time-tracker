@@ -46,7 +46,8 @@
 		"leafo/scssphp": "^0.6.5",
 		"patchwork/jsqueeze": "^2.0",
 		"bgrins/tinycolor": "^1.4",
-		"istvan-ujjmeszaros/bootstrap-colorpickersliders": "^3.0"
+		"istvan-ujjmeszaros/bootstrap-colorpickersliders": "^3.0",
+		"friendsofsymfony/jsrouting-bundle": "^1.6"
 	},
 	"require-dev": {
 		"ext-mbstring": "*",
