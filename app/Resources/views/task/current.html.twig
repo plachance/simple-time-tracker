@@ -52,10 +52,10 @@
 									</button>
 									{{ form_end(restart_form) }}
 								{% endif %}
+								<a href="{{ path('task_edit', { 'id': task.id, 'r': app.request.requestUri }) }}" class="btn btn-default">
+									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {% trans %}Modify{% endtrans %}
+								</a>
 							{% endif %}
-							<a href="{{ path('task_edit', { 'id': task.id, 'r': app.request.requestUri }) }}" class="btn btn-default">
-								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> {% trans %}Modify{% endtrans %}
-							</a>
 							<a href="{{ path('task_new', {'r': app.request.requestUri}) }}" class="btn btn-default">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}Start a new task{% endtrans %}
 							</a>
