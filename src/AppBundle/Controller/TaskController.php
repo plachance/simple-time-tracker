@@ -26,6 +26,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class TaskController extends AppController
 {
+	const LATEST_TASKS_COUNT = 5;
+
 	/**
 	 * Lists all Task entities.
 	 *
@@ -242,7 +244,10 @@ class TaskController extends AppController
 
 		$repo = $em->getRepository('AppBundle:Task');
 		/* @var $repo TaskRepository */
-		$task = $repo->getCurrentTask($this->getUser());
+		$user = $this->getUser();
+		/* @var $user UserInterface */
+		$task = $repo->getCurrentTask($user);
+		$latestTasks = $repo->getTasksList($user, self::LATEST_TASKS_COUNT);
 
 		$projectRepo = $em->getRepository('AppBundle:Project');
 		$pinnedProjects = $projectRepo->findBy(['user' => $this->getUser(), 'pinned' => true],
@@ -259,6 +264,7 @@ class TaskController extends AppController
 				'stop_form' => $stopForm ? $stopForm->createView() : null,
 				'restart_form' => $restartForm ? $restartForm->createView() : null,
 				'pinned_projects' => $pinnedProjects,
+				'latest_tasks' => $latestTasks,
 		]);
 	}
 

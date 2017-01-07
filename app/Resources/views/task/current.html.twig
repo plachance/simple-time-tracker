@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% from 'task/task.html.twig' import render_tasks_list %}
 {% set title = 'Current task'|trans %}
 
 {% block body %}
@@ -62,6 +63,8 @@
 						</div>
 					</div>
 				</div>
+				<h2 class="text-center">{% trans %}Latest tasks{% endtrans %}</h2>
+				{{ render_tasks_list(latest_tasks, false, false, false) }}
 			</div>
 			<div class="col-sm-4">
 				<div class="panel panel-default">

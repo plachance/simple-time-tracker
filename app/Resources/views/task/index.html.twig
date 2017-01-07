@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% from 'task/task.html.twig' import render_tasks_list %}
 {% set title = 'History'|trans %}
 
 {% block body %}
@@ -7,41 +8,6 @@
 			<li><a href="{{ path('task_new', {'r': app.request.requestUri}) }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {% trans %}Create task{% endtrans %}</a></li>
 		</ul>
 
-        <div class="table-responsive">
-            <table class="table table-striped table-hover datatables" data-order='[[2, "desc"]]'>
-                <thead class="thead-default">
-                    <tr>
-                        <th>{% trans %}Project{% endtrans %}</th>
-                        <th>{% trans %}Begin{% endtrans %}</th>
-                        <th>{% trans %}End{% endtrans %}</th>
-                        <th>{% trans %}Duration{% endtrans %}</th>
-                        <th data-orderable="false" data-searchable="false"></th>
-                        <th data-orderable="false" data-searchable="false"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for task in tasks %}
-                        <tr>
-                            <td>{{ task.no ~ (task.project_description ? ('-' ~ task.project_description)) }}</td>
-                            <td data-order="{{ task.dateTimeBegin|date('U') }}">{{ task.dateTimeBegin ? task.dateTimeBegin|localizeddate('medium', 'medium') }}</td>
-                            <td data-order="{{ task.dateTimeEnd|default(date('+1years'))|date('U') }}">{{ task.dateTimeEnd ? task.dateTimeEnd|localizeddate('medium', 'medium') }}</td>
-                            <td>{{ task.duration }}</td>
-                            <td>
-                                <a href="{{ path('task_edit', { 'id': task.id, 'r': app.request.requestUri }) }}"
-                                   class="btn btn-default btn-sm" title="{% trans %}Modify{% endtrans %}" role="button">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ path('task_delete', { 'id': task.id, 'r': app.request.requestUri }) }}"
-                                   class="btn btn-default btn-sm" title="{% trans %}Delete{% endtrans %}" role="button">
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        {{ render_tasks_list(tasks) }}
     </div>
 {% endblock %}

@@ -24,9 +24,10 @@ class TaskRepository extends EntityRepository
 	 * Get the tasks list for the specified user.
 	 *
 	 * @param User $user
+	 * @param int $maxResults
 	 * @return mixed[string][]
 	 */
-	public function getTasksList(User $user)
+	public function getTasksList(User $user, int $maxResults = null)
 	{
 		$qb = $this->createQueryBuilder('t');
 
@@ -36,6 +37,7 @@ class TaskRepository extends EntityRepository
 				->innerJoin('t.project', 'p')
 				->where('t.user = :user')
 				->orderBy('t.dateTimeEnd', 'DESC')
+				->setMaxResults($maxResults)
 				->setParameter('user', $user)
 				->getQuery()
 				->execute();

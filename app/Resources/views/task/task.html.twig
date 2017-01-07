@@ -1,0 +1,41 @@
+{% macro render_tasks_list(tasks, paging, searching, info) %}
+	{% set paging = paging is null ? true : paging %}
+	{% set searching = searching is null ? true : searching %}
+	{% set info = info is null ? true : info %}
+	<div class="table-responsive">
+		<table class="table table-striped table-hover datatables" data-order='[[2, "desc"]]' data-paging="{{ paging ? 'true' : 'false' }}" data-searching="{{ searching ? 'true' : 'false' }}" data-info="{{ info ? 'true' : 'false' }}">
+			<thead class="thead-default">
+				<tr>
+					<th>{% trans %}Project{% endtrans %}</th>
+					<th>{% trans %}Begin{% endtrans %}</th>
+					<th>{% trans %}End{% endtrans %}</th>
+					<th>{% trans %}Duration{% endtrans %}</th>
+					<th data-orderable="false" data-searchable="false"></th>
+					<th data-orderable="false" data-searchable="false"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for task in tasks %}
+					<tr>
+						<td>{{ task.no ~ (task.project_description ? ('-' ~ task.project_description)) }}</td>
+						<td data-order="{{ task.dateTimeBegin|date('U') }}">{{ task.dateTimeBegin ? task.dateTimeBegin|localizeddate('medium', 'medium') }}</td>
+						<td data-order="{{ task.dateTimeEnd|default(date('+1years'))|date('U') }}">{{ task.dateTimeEnd ? task.dateTimeEnd|localizeddate('medium', 'medium') }}</td>
+						<td>{{ task.duration }}</td>
+						<td>
+							<a href="{{ path('task_edit', { 'id': task.id, 'r': app.request.requestUri }) }}"
+							   class="btn btn-default btn-sm" title="{% trans %}Modify{% endtrans %}" role="button">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+						</td>
+						<td>
+							<a href="{{ path('task_delete', { 'id': task.id, 'r': app.request.requestUri }) }}"
+							   class="btn btn-default btn-sm" title="{% trans %}Delete{% endtrans %}" role="button">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endmacro  %}
