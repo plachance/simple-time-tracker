@@ -196,7 +196,7 @@ class TaskController extends AppController
 			throw $this->createAccessDeniedException();
 		}
 
-		$form = $this->createDeleteForm($task);
+		$form = $this->createDeleteForm($task, $request->query->get('r'));
 		$form->handleRequest($request);
 
 		if($form->isSubmitted() && $form->isValid())
@@ -206,7 +206,7 @@ class TaskController extends AppController
 			$em->remove($task);
 			$em->flush();
 
-			return $this->redirectToRoute('task_index');
+			return $this->redirectReturnUrlOrRoute($request, 'task_index');
 		}
 
 		return $this->render('task/delete.html.twig',
@@ -220,12 +220,18 @@ class TaskController extends AppController
 	 * Creates a form to delete a Task entity.
 	 *
 	 * @param Task $task The Task entity
+	 * @param string|null $returnUrl
 	 * @return Form The form
 	 */
-	private function createDeleteForm(Task $task)
+	private function createDeleteForm(Task $task, string $returnUrl = null)
 	{
+		$urlParameters = [
+			'id' => $task->getId(),
+			'r' => $returnUrl,
+		];
+
 		return $this->createFormBuilder()
-				->setAction($this->generateUrl('task_delete', ['id' => $task->getId()]))
+				->setAction($this->generateUrl('task_delete', $urlParameters))
 				->setMethod('DELETE')
 				->getForm()
 		;

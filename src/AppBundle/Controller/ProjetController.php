@@ -137,7 +137,7 @@ class ProjetController extends AppController
 			throw $this->createAccessDeniedException();
 		}
 
-		$form = $this->createDeleteForm($project);
+		$form = $this->createDeleteForm($project, $request->query->get('r'));
 		$form->handleRequest($request);
 
 		if($form->isSubmitted() && $form->isValid())
@@ -149,7 +149,7 @@ class ProjetController extends AppController
 				$em->remove($project);
 				$em->flush();
 
-				return $this->redirectToRoute('project_index');
+				return $this->redirectReturnUrlOrRoute($request, 'project_index');
 			}
 			catch(ForeignKeyConstraintViolationException $ex)
 			{
@@ -169,13 +169,18 @@ class ProjetController extends AppController
 	 * Creates a form to delete a Project entity.
 	 *
 	 * @param Project $project The Project entity
-	 *
+	 * @param string|null $returnUrl
 	 * @return Form The form
 	 */
-	private function createDeleteForm(Project $project)
+	private function createDeleteForm(Project $project, string $returnUrl = null)
 	{
+		$urlParameters = [
+			'id' => $project->getId(),
+			'r' => $returnUrl,
+		];
+
 		return $this->createFormBuilder()
-				->setAction($this->generateUrl('project_delete', ['id' => $project->getId()]))
+				->setAction($this->generateUrl('project_delete', $urlParameters))
 				->setMethod('DELETE')
 				->getForm()
 		;
