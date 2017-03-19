@@ -3,18 +3,16 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/..
 
-if [ $1 == "" ]; then
-	$1 = "dev"
+if [[ $1 != "" ]]; then
+	export SYMFONY_ENV=$1
 fi
-
-export SYMFONY_ENV=$1
 
 mkdir -p var
 
-if [ "$1" == "prod" ]; then
+if [[ $1 == "prod" ]]; then
 	composer install --no-dev --no-progress --no-suggest --optimize-autoloader --no-interaction
 	./bin/console doctrine:ensure-production-settings
-elif [ "$1" == "test" ]; then
+elif [[ $1 == "test" ]]; then
 	composer install --no-progress --no-suggest --no-interaction
 else
 	composer install
