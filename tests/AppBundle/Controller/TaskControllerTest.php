@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\AppBundle\Controller;
 
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
@@ -55,5 +57,4 @@ class TaskControllerTest extends WebTestCase
 		$this->assertNotContains('Restart', $content);
 		$this->assertContains('Start a new task', $content);
 	}
-
 }

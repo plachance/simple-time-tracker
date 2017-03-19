@@ -18,6 +18,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class Builder implements ContainerAwareInterface
 {
 	use ContainerAwareTrait;
+
 	/**
 	 * Checks if the attributes are granted against the current authentication token and optionally supplied object.
 	 *
@@ -242,5 +243,4 @@ class Builder implements ContainerAwareInterface
 
 		return $menu;
 	}
-
 }

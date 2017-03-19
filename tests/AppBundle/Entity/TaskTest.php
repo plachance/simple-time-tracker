@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\AppBundle\Entity;
 
 use AppBundle\Entity\Project;
@@ -111,5 +113,4 @@ class TaskTest extends TestCase
 
 		$this->assertNull($result);
 	}
-
 }

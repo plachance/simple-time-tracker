@@ -62,5 +62,4 @@ class AppController extends Controller
 		/* @var $translator Translator */
 		return $translator->trans($message, $parameters, $domain, $locale);
 	}
-
 }

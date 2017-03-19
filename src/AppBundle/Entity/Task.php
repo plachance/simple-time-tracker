@@ -194,5 +194,4 @@ class Task
 
 		return $newTask;
 	}
-
 }

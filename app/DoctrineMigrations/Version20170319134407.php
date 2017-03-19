@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
@@ -31,5 +33,4 @@ class Version20170319134407 extends AbstractMigration
 
 		$this->addSql('ALTER TABLE "user" DROP projects_order_by_asc');
 	}
-
 }

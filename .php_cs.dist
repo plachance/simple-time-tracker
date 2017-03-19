@@ -1,0 +1,30 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+	->exclude([
+		'bin',
+		'var',
+		'web',
+	])
+	->in(__DIR__)
+;
+
+return PhpCsFixer\Config::create()
+	->setIndent("\t")
+	->setRules([
+		'@Symfony' => true,
+		'declare_strict_types' => true, //Risky
+		'ternary_to_null_coalescing' => true,
+		'concat_space' => ['spacing' => 'one'],
+		'ordered_imports' => true,
+		'phpdoc_order' => true,
+		'array_syntax' => ['syntax' => 'short'],
+		'braces' => false,
+		'phpdoc_separation' => false,
+		'phpdoc_align' => false,
+		'no_extra_consecutive_blank_lines' => false, //bugged in 2.1.2
+	])
+	->setFinder($finder)
+	->setUsingCache(true)
+	->setRiskyAllowed(true)
+;

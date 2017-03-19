@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\AppBundle\Util;
 
 use AppBundle\Util\PropertyValue;
@@ -72,5 +74,4 @@ class PropertyValueTest extends TestCase
 
 		$this->assertEquals(self::NOT_EMPTY_STRING, $result);
 	}
-
 }

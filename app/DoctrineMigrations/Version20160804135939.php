@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
@@ -31,5 +33,4 @@ class Version20160804135939 extends AbstractMigration
 
 		$this->addSql('ALTER TABLE task ADD description VARCHAR(255) DEFAULT NULL');
 	}
-
 }

@@ -329,5 +329,4 @@ class TaskRepository extends EntityRepository
 
 		return $departureTime;
 	}
-
 }

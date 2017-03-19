@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\AppBundle\Util;
 
 use AppBundle\Util\DateTimeSecondsFixViewTransformer;
@@ -40,5 +42,4 @@ class DateTimeSecondsFixViewTransformerTest extends TestCase
 
 		$this->assertEquals(self::DATETIME_WITH_SECONDS, $result);
 	}
-
 }

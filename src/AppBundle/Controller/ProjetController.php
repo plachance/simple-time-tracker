@@ -231,5 +231,4 @@ class ProjetController extends AppController
 
 		return $this->redirectToRoute('task_current');
 	}
-
 }

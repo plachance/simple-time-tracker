@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
@@ -52,5 +54,4 @@ class Version00000000000000 extends AbstractMigration
 		$this->addSql('DROP TABLE "user"');
 		$this->addSql('DROP TABLE project');
 	}
-
 }

@@ -51,5 +51,4 @@ class ProjectType extends AbstractType
 			'noDisabled' => false,
 		]);
 	}
-
 }

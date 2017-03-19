@@ -50,5 +50,4 @@ class AppExtension extends Twig_Extension
 
 		return $precision === null ? $x : round($x, $precision);
 	}
-
 }

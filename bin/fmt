@@ -10,7 +10,7 @@ else
 fi
 
 if [[ $ENV == "ci" ]]; then
-	./vendor/bin/php-cs-fixer fix --dry-run
+	./vendor/bin/php-cs-fixer fix -vvv --dry-run
 else
-	./vendor/bin/php-cs-fixer fix
+	./vendor/bin/php-cs-fixer fix -vvv
 fi

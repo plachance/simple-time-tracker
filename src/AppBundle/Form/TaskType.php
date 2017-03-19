@@ -89,5 +89,4 @@ class TaskType extends AbstractType
 			'user' => null,
 		]);
 	}
-
 }

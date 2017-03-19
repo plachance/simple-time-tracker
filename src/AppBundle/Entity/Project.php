@@ -212,5 +212,4 @@ class Project
 
 		return $no . '-' . $this->description;
 	}
-
 }

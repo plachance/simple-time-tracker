@@ -94,5 +94,4 @@ trait PasswordQuestionHelper
 
 		return $helper->ask($input, $output, $confirmPasswordQuestion);
 	}
-
 }

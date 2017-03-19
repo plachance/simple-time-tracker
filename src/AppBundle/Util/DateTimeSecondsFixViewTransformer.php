@@ -24,5 +24,4 @@ class DateTimeSecondsFixViewTransformer implements DataTransformerInterface
 	{
 		return $value;
 	}
-
 }

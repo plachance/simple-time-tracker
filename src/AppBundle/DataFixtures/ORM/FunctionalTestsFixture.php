@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Project;
@@ -18,6 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 class FunctionalTestsFixture extends AbstractFixture implements ContainerAwareInterface
 {
 	use \Symfony\Component\DependencyInjection\ContainerAwareTrait;
+
 	public function load(ObjectManager $manager)
 	{
 		$encoder = $this->container->get('security.password_encoder');
@@ -55,5 +58,4 @@ class FunctionalTestsFixture extends AbstractFixture implements ContainerAwareIn
 
 		$manager->flush();
 	}
-
 }

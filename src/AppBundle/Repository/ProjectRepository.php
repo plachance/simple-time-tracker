@@ -122,5 +122,4 @@ class ProjectRepository extends EntityRepository
 				->setParameter('no', $projectNo)
 				->execute();
 	}
-
 }

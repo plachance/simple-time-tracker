@@ -43,5 +43,4 @@ class DateTimeType extends SymfonyDateTimeType
 		parent::configureOptions($resolver);
 		$resolver->setDefault('format', self::HTML5_FORMAT);
 	}
-
 }

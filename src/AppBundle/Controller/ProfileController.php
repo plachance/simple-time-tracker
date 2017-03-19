@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
@@ -105,5 +107,4 @@ class ProfileController extends AppController
 				->getForm()
 		;
 	}
-
 }

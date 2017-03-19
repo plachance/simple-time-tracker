@@ -22,6 +22,7 @@ use Symfony\Component\Validator\Validator\RecursiveValidator;
 class ChangePasswordCommand extends ContainerAwareCommand
 {
 	use \AppBundle\Util\PasswordQuestionHelper;
+
 	protected function configure()
 	{
 		$this->setName('user:change-password')
@@ -64,5 +65,4 @@ class ChangePasswordCommand extends ContainerAwareCommand
 
 		$output->writeln("<info>Password changed for user '{$username}'.</info>");
 	}
-
 }

@@ -489,5 +489,4 @@ class TaskController extends AppController
 
 		return $this->redirectToRoute('task_current');
 	}
-
 }

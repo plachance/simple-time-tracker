@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AppBundle\Util;
 
 use DateTime;
@@ -26,9 +28,9 @@ class Intl
 		$this->translator = $translator;
 	}
 
-	public function localizeDate(DateTime $date, $dateFormat = 'medium',
-		$timeFormat = 'medium', $locale = null, $format = null,
-		$calendar = 'gregorian')
+	public function localizeDate(DateTime $date, string $dateFormat = 'medium',
+		string $timeFormat = 'medium', string $locale = null, string $format = null,
+		string $calendar = 'gregorian')
 	{
 		$formatValues = [
 			'none' => IntlDateFormatter::NONE,
@@ -48,5 +50,4 @@ class Intl
 
 		return $formatter->format($date->getTimestamp());
 	}
-
 }

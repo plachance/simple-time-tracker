@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
@@ -32,5 +34,4 @@ class Version20160804103959 extends AbstractMigration
 
 		$this->addSql('ALTER TABLE "user" DROP day_length');
 	}
-
 }

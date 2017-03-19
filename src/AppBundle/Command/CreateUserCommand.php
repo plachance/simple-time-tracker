@@ -29,6 +29,7 @@ use Symfony\Component\Validator\Validator\RecursiveValidator;
 class CreateUserCommand extends ContainerAwareCommand
 {
 	use \AppBundle\Util\PasswordQuestionHelper;
+
 	protected function configure()
 	{
 		$this->setName('user:create')
@@ -114,5 +115,4 @@ class CreateUserCommand extends ContainerAwareCommand
 		$em->persist($user);
 		$em->flush();
 	}
-
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\AppBundle\Util;
 
 use AppBundle\Util\AppExtension;
@@ -44,5 +46,4 @@ class AppExtensionTest extends TestCase
 		$result = $ext->roundToFraction(1.2, 3, 2);
 		$this->assertEquals(1.33, $result);
 	}
-
 }

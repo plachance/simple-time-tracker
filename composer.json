@@ -53,7 +53,7 @@
 		"sensio/generator-bundle": "^3.0",
 		"symfony/phpunit-bridge": "^3.0",
 		"phpunit/phpunit": "^5.4",
-		"friendsofphp/php-cs-fixer": "^1.11",
+		"friendsofphp/php-cs-fixer": "^2.1",
 		"doctrine/doctrine-fixtures-bundle": "^2.3",
 		"liip/functional-test-bundle": "^1.6"
 	},

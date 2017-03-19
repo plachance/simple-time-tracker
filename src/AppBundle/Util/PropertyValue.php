@@ -22,5 +22,4 @@ class PropertyValue
 	{
 		return self::ensureNullIfEmpty(trim((string) $value));
 	}
-
 }
