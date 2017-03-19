@@ -264,7 +264,7 @@ class TaskController extends AppController
 		$pinForm = $task ? $this->createPinForm($task->getProject()) : null;
 		$stopForm = $task ? $this->createStopForm($task) : null;
 		$restartForm = $task ? $this->createRestartForm($task) : null;
-		$sortProjectsForm = $task ? $this->createSortProjectsForm($user) : null;
+		$sortProjectsForm = $this->createSortProjectsForm($user);
 
 		return $this->render('task/current.html.twig',
 				[
