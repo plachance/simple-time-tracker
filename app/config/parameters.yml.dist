@@ -10,6 +10,7 @@ parameters:
     database_server_version: 9.2 # Required to avoid this bug https://github.com/doctrine/DoctrineBundle/issues/351
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
+    doctrine_cache_driver: apcu
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1

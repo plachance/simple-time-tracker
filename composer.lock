@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4f1d921763c548b093590058ccd5f05",
+    "content-hash": "bc8a8e08dd5d666299eff686ab637894",
     "packages": [
         {
             "name": "bgrins/tinycolor",
@@ -4709,8 +4709,7 @@
     "platform": {
         "php": "^7.0",
         "ext-pgsql": "*",
-        "ext-intl": "*",
-        "ext-apcu": "*"
+        "ext-intl": "*"
     },
     "platform-dev": {
         "ext-mbstring": "*"
