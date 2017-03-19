@@ -21,7 +21,6 @@ cache:
 
 before_install:
     - phpenv config-rm xdebug.ini || true
-    - echo "no" | pecl install apcu-5.1.3
 
 script:
     - ./bin/test
