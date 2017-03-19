@@ -73,7 +73,17 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h2 class="panel-title"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> {% trans %}Pinned projects{% endtrans %}</h2></div>
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> {% trans %}Pinned projects{% endtrans %}
+							{{ form_start(sort_projects_form, {attr: {style: 'display:inline-block'}}) }}
+							{{ form_widget(sort_projects_form) }}
+							<button type="submit" class="btn btn-default btn-sm" title="{{ app.user.projectsOrderByAsc ? 'Sort by descending order'|trans : 'Sort by ascending order'|trans }}">
+								<span class="glyphicon glyphicon-sort-by-attributes{{ app.user.projectsOrderByAsc ? '' : '-alt' }}" aria-hidden="true"></span>
+							</button>
+							{{ form_end(sort_projects_form) }}
+						</h2>
+					</div>
 					{% if pinned_projects is empty %}
 						<div class="alert alert-info bottom">
 							<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>

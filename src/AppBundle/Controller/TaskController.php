@@ -7,6 +7,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Exception\TaskAlreadyStoppedException;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\Task;
+use AppBundle\Entity\User;
 use AppBundle\Form\TaskType;
 use AppBundle\Repository\TaskRepository;
 use AppBundle\Util\Intl;
@@ -251,17 +252,19 @@ class TaskController extends AppController
 		$repo = $em->getRepository('AppBundle:Task');
 		/* @var $repo TaskRepository */
 		$user = $this->getUser();
-		/* @var $user UserInterface */
+		/* @var $user User */
 		$task = $repo->getCurrentTask($user);
 		$latestTasks = $repo->getTasksList($user, self::LATEST_TASKS_COUNT);
 
 		$projectRepo = $em->getRepository('AppBundle:Project');
+		$sortOrder = $user->getProjectsOrderByAsc() ? 'asc' : 'desc';
 		$pinnedProjects = $projectRepo->findBy(['user' => $this->getUser(), 'pinned' => true],
-			['no' => 'asc', 'description' => 'asc']);
+			['no' => $sortOrder, 'description' => $sortOrder]);
 
 		$pinForm = $task ? $this->createPinForm($task->getProject()) : null;
 		$stopForm = $task ? $this->createStopForm($task) : null;
 		$restartForm = $task ? $this->createRestartForm($task) : null;
+		$sortProjectsForm = $task ? $this->createSortProjectsForm($user) : null;
 
 		return $this->render('task/current.html.twig',
 				[
@@ -269,6 +272,7 @@ class TaskController extends AppController
 				'pin_form' => $pinForm ? $pinForm->createView() : null,
 				'stop_form' => $stopForm ? $stopForm->createView() : null,
 				'restart_form' => $restartForm ? $restartForm->createView() : null,
+				'sort_projects_form' => $sortProjectsForm->createView(),
 				'pinned_projects' => $pinnedProjects,
 				'latest_tasks' => $latestTasks,
 		]);
@@ -316,7 +320,7 @@ class TaskController extends AppController
 	/**
 	 * Creates a form to stop a Task entity.
 	 *
-	 * @param Project $project The Task entity
+	 * @param Project $project
 	 * @return Form The form
 	 */
 	private function createPinForm(Project $project)
@@ -325,6 +329,23 @@ class TaskController extends AppController
 				->setAction($this->generateUrl('project_pin', [
 						'id' => $project->getId(),
 						'pinned' => (int) !$project->getPinned(),
+				]))
+				->setMethod('POST')
+				->getForm()
+		;
+	}
+
+	/**
+	 * Creates a form to change the order of the pinned projects list.
+	 *
+	 * @param User $user
+	 * @return Form The form
+	 */
+	private function createSortProjectsForm(User $user)
+	{
+		return $this->createFormBuilder()
+				->setAction($this->generateUrl('sort_projects', [
+						'orderBy' => $user->getProjectsOrderByAsc() ? 'desc' : 'asc',
 				]))
 				->setMethod('POST')
 				->getForm()
@@ -445,6 +466,28 @@ class TaskController extends AppController
 				'hours' => $hours,
 				'date' => $date,
 		]);
+	}
+
+	/**
+	 * Set the sort order for the pinned projects list.
+	 *
+	 * @Route("/sortprojects/{orderBy}", name="sort_projects", requirements={"orderby": "asc|desc"})
+	 * @Method("POST")
+	 * @Security("is_granted('ROLE_USER')")
+	 */
+	public function sortProjectsAction(Request $request, string $orderBy)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$user = $this->getUser();
+		/* @var $user User */
+		$em->refresh($user); //It tries to save the user with an empty password otherwise.
+
+		$user->setProjectsOrderByAsc('asc' === $orderBy);
+
+		$em->flush();
+
+		return $this->redirectToRoute('task_current');
 	}
 
 }

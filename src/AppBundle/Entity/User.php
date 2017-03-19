@@ -74,6 +74,13 @@ class User implements AdvancedUserInterface, Serializable
 	private $dayLength = 7.5;
 
 	/**
+	 * @var bool
+	 * @Column(name="projects_order_by_asc", type="boolean", nullable=false)
+	 * @Assert\NotNull()
+	 */
+	private $projectsOrderByAsc = true;
+
+	/**
 	 * Get id.
 	 *
 	 * @return int
@@ -208,6 +215,26 @@ class User implements AdvancedUserInterface, Serializable
 	public function getDayLength()
 	{
 		return $this->dayLength;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getProjectsOrderByAsc(): bool
+	{
+		return $this->projectsOrderByAsc;
+	}
+
+	/**
+	 * @param bool $projectsOrderByAsc
+	 *
+	 * @return User
+	 */
+	public function setProjectsOrderByAsc(bool $projectsOrderByAsc = true): User
+	{
+		$this->projectsOrderByAsc = $projectsOrderByAsc;
+
+		return $this;
 	}
 
 	public function serialize()

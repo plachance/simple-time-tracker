@@ -309,6 +309,14 @@
         <source>Latest tasks</source>
         <target>Latest tasks</target>
       </trans-unit>
+      <trans-unit id="3a3c176c05e8ad99f6f2d6d6da048de8" resname="Sort by descending order">
+        <source>Sort by descending order</source>
+        <target>Sort by descending order</target>
+      </trans-unit>
+      <trans-unit id="c6095945a4872d1163ee654ac5c6adca" resname="Sort by ascending order">
+        <source>Sort by ascending order</source>
+        <target>Sort by ascending order</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
