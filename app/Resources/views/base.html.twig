@@ -14,9 +14,9 @@
 				'components/select2/dist/css/select2.css'
 				'components/select2-bootstrap-theme/dist/select2-bootstrap.css'
 				'components/bootstrap-colorpickersliders/dist/bootstrap.colorpickersliders.css'
-				'css/global.css'
+				'%kernel.root_dir%/Resources/public/css/global.css'
 				filter='cssrewrite,?scssphp'
-				output='assets/css/global.css'
+				output='css/*.css'
 			%}
 			<link rel="stylesheet" href="{{ asset_url }}" />
 			{% endstylesheets %}
@@ -103,26 +103,25 @@
 			'components/datatables/media/js/jquery.dataTables.js'
 			'components/datatables/media/js/dataTables.bootstrap.js'
 			'components/select2/dist/js/select2.js'
-			'components/select2/dist/js/i18n/fr.js'
 			'components/tinycolor/tinycolor.js'
 			'components/bootstrap-colorpickersliders/dist/bootstrap.colorpickersliders.js'
 			'bundles/fosjsrouting/js/router.js'
 			'js/fos_js_routes.js'
-			'js/global.js'
+			'%kernel.root_dir%/Resources/public/js/global.js'
 			filter="?jsqueeze"
-			output='assets/js/global.js'
+			output='js/*.js'
 		%}
 		<script src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 		{% if language != 'en' %}
-		<script>
-			$.fn.select2.defaults.set("language", "{{ language }}");
-			$.extend($.fn.dataTable.defaults, {
-				language: {
-					url: "{{ asset('js/datatables/' ~ language ~ '.json') }}"
-				}
-			});
-		</script>
+			{% javascripts
+				'components/select2/dist/js/i18n/fr.js'
+				'%kernel.root_dir%/Resources/public/js/fr.js'
+				filter="?jsqueeze"
+				output='js/*.js'
+			%}
+			<script src="{{ asset_url }}"></script>
+			{% endjavascripts %}
 		{% endif %}
 	{% endblock %}
 </body>

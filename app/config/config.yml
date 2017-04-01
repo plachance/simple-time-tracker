@@ -30,8 +30,6 @@ framework:
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
-    assets:
-        version: 'v1'
 
 assetic:
     debug:          '%kernel.debug%'
@@ -43,6 +41,8 @@ assetic:
         jsqueeze: ~
     bundles:
         - AppBundle
+    workers:
+        cache_busting: ~
 
 # Twig Configuration
 twig:

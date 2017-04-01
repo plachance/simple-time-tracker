@@ -8,6 +8,8 @@
 /web/bundles/
 /web/components/
 /web/assets/
+/web/css/
+/web/js/
 *.cache
 *~
 .php_cs
