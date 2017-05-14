@@ -131,10 +131,10 @@
 			"type": "package",
 			"package": {
 				"name": "select2/select2-bootstrap-theme",
-				"version": "0.1.0-beta.9",
+				"version": "0.1.0-beta.10",
 				"dist": {
 					"type": "zip",
-					"url": "https://github.com/select2/select2-bootstrap-theme/archive/0.1.0-beta.9.zip"
+					"url": "https://github.com/select2/select2-bootstrap-theme/archive/0.1.0-beta.10.zip"
 				}
 			}
 		},
